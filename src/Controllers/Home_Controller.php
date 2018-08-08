@@ -5,7 +5,6 @@ use Kd\Core\Controller\Controller as Controller;
 
 class Home_Controller extends Controller
 {
-
     public function index()
     {
         // load views
@@ -13,6 +12,4 @@ class Home_Controller extends Controller
         require BASE_PATH . 'Views/home/index.php';
         require BASE_PATH . 'Views/Layouts/footer.php';
     }
-
-
 }

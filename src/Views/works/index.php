@@ -1,5 +1,3 @@
-
-
 <br />
 <h2 align="center"><a href="#">My Work</a></h2>
 <br />

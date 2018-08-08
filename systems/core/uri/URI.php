@@ -5,32 +5,19 @@ namespace Kd\Core\URI;
 
 class URI
 {
-
     public $url_controller = '';
 
     public $url_action = '';
 
     public $url_params = array();
 
-
     public function __construct()
     {
         $this->getURI();
     }
 
-    function removeQuery($url)
+    protected function getURI()
     {
-        $url_ac = "";
-        if (strpos($url, '?')>=0)
-        {
-            $url_ac = substr($url, 0,strpos($url, '?') );
-        }
-        $parsed = [];
-        parse_str(substr($url, strpos($url, '?') + 1), $parsed);
-
-    }
-    protected function getURI() {
-
         if (! isset($_SERVER['REQUEST_URI']))
         {
             return;
@@ -41,7 +28,6 @@ class URI
         $url = filter_var($url, FILTER_SANITIZE_URL);
 
         $url = explode('/', $url);
-
 
         if(!isset($url[0]))
         {
@@ -54,7 +40,6 @@ class URI
                 $this->url_action = 'index';
             }
             else{
-
                 if (!empty(strpos($url[1], '?')))
                 {
                     $this->url_action = substr($url[1], 0,strpos($url[1], '?') );
@@ -65,15 +50,7 @@ class URI
                     unset($url[0],$url[1]);
                     $this->url_params = array_values($url);
                 }
-
-
-
             }
-
         }
-
-
     }
-
-
 }
