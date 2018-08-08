@@ -1,0 +1,23 @@
+web:
+  image: apparena/php7-xdebug
+  ports:
+    - "8080:80"
+  links:
+    - mysql
+  volumes:
+    - ./../:/var/www/html/web
+    - "./build/php.ini:/usr/local/etc/php/php.ini"
+  env_file:
+      - build/env
+  container_name: demo
+mysql:
+  image: mysql:5.6.23
+  ports:
+      - "3309:3306"
+  # Add a persistent drive to have the mysql DB locally and not only in the container
+  volumes:
+      - ./build/mysql/data:/var/lib/mysql
+  env_file:
+    - build/env
+  container_name: demo_mysql
+
