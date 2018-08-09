@@ -1,15 +1,12 @@
- <?php defined('SYS_PATH') OR exit('No direct script access allowed');
-
- /**
-  * Created by PhpStorm.
-  * User: lenguyenkha
-  * Date: 8/8/18
-  * Time: 8:51 AM
-  */
-
-
-
-
-
-
-
+<?php
+$router = array(
+    'default_controller' => 'home' ,
+    'home'               => array('index' => 'index'),
+    'works'              => array(  'index' => 'index' ,
+                                    'add'  => 'add',
+                                    'load' => 'load',
+                                    'update' => 'update',
+                                    'delete'  =>  'delete',
+                                    'edit' => 'edit')
+);
+return $router;

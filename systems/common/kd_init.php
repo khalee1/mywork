@@ -8,6 +8,7 @@
 
 /**
  * Configuration for: URL
+ * Init Full Domain
  */
 define('URL_PUBLIC_FOLDER', 'public');
 define('URL_PROTOCOL', '//');

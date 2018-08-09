@@ -1,8 +1,6 @@
 <?php
 
 namespace Kd\Core\Controller;
-
-
 use Kd\Core\Config\Config as Config;
 use Kd\Models\DAO\Work_DAO as Works;
 use PDO;
@@ -30,6 +28,7 @@ class Controller
         $this->openConnectionToDatabase($this->config->item('db'));
         $this->model = new Works($this->db);
     }
+
     private function openConnectionToDatabase($configDB)
     {
         // set the (optional) options of the PDO connection. in this case, we set the fetch mode to
