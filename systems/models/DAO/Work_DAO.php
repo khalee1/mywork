@@ -14,7 +14,6 @@ class Work_DAO
             exit('Database connection could not be established.');
         }
     }
-
     /**
      * Get all works from database
      */
@@ -27,7 +26,6 @@ class Work_DAO
 
         return $query->fetchAll();
     }
-
     /**
      * Get all status from database
      */
@@ -39,18 +37,8 @@ class Work_DAO
 
         return $query->fetchAll();
     }
-
     /**
      * Add a work to database
-     * TODO put this explanation into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
-     * @param string $work_name Work Name
-     * @param string $start_date Start Date
-     * @param string $end_date End Date
-     * @param string $id_status ID Status
      */
     public function addWork($work_name , $start_date , $end_date , $id_status)
     {
@@ -60,11 +48,8 @@ class Work_DAO
 
         return $query->execute($parameters);
     }
-
     /**
      * Delete a work in the database
-     * Please note: this is just an example! In a real application you would not simply let everybody
-     * add/update/delete stuff!
      * @param int $id Id of work
      */
     public function deleteWork($id)
@@ -75,7 +60,6 @@ class Work_DAO
 
         $query->execute($parameters);
     }
-
     /**
      * Get a work from database
      */
@@ -91,14 +75,8 @@ class Work_DAO
 
         return $query->fetch();
     }
-
     /**
      * Update a work in database
-     * // TODO put this explaination into readme and remove it from here
-     * Please note that it's not necessary to "clean" our input in any way. With PDO all input is escaped properly
-     * automatically. We also don't use strip_tags() etc. here so we keep the input 100% original (so it's possible
-     * to save HTML and JS to the database, which is a valid use case). Data will only be cleaned when putting it out
-     * in the views (see the views for more info).
      * @param string $work_name Work Name
      * @param string $start_date Start Date
      * @param string $end_date End Date

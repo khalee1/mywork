@@ -5,13 +5,9 @@ use KD\Core\URI\URI as URI;
 
 class Router
 {
-
     protected $router = array();
-
     public $uri = null;
-
     public $class = '';
-
     public $method = 'index';
 
     public function  __construct()
@@ -20,6 +16,7 @@ class Router
         $this->uri = new URI();
         $this->load();
     }
+
     protected function _set_router()
     {
         $this->router['default_controller'] = 'home';
@@ -47,7 +44,6 @@ class Router
     protected function load()
     {
         $this->class =  ucfirst($this->uri->url_controller)."_Controller";
-
         if(!file_exists(BASE_PATH.'Controllers'.DIRECTORY_SEPARATOR.$this->class.'.php'))
         {
             die('No Controller');
@@ -67,6 +63,7 @@ class Router
         {
             die('Not found method in router');
         }
+
         $controllerObject = new $this->class();
 
         if ( !method_exists($controllerObject, $this->method)){

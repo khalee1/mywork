@@ -2,13 +2,10 @@
 
 namespace Kd\Core\URI;
 
-
 class URI
 {
     public $url_controller = '';
-
     public $url_action = '';
-
     public $url_params = array();
 
     public function __construct()
@@ -24,12 +21,10 @@ class URI
         }
 
         $url = trim($_SERVER['REQUEST_URI'], '/');
-
         $url = filter_var($url, FILTER_SANITIZE_URL);
-
         $url = explode('/', $url);
 
-        if(!isset($url[0]))
+        if(empty($url[0]))
         {
             $this->url_controller = 'home' ;
         }

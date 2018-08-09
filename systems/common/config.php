@@ -10,7 +10,6 @@
  * Configuration for: Database
  * This is the place where you define your database credentials, database type etc.
  */
-
 $config['db'] = array(
     'type' => 'mysql',
     'host' => 'mysql',
@@ -19,7 +18,6 @@ $config['db'] = array(
     'pass' => 'root' ,
     'charset'=> 'utf8',
     );
-
 
 return $config;
 
