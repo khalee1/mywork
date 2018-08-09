@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c085240-74b9-4412-9ed2-b5910ec19fd7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/build/mysql/data/my_work/work.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/build/mysql/data/my_work/work.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_index_stats.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_table_stats.ibd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Works_Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Works_Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/common/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/common/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/common/kd_init.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/common/kd_init.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/common/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/common/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/config/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/config/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/controller/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/controller/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/router/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/router/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/uri/URI.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/uri/URI.php" afterDir="false" />
-    </list>
+    <list default="true" id="1c085240-74b9-4412-9ed2-b5910ec19fd7" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,8 +70,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="303">
-              <caret line="91" column="81" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
+            <state relative-caret-position="1365">
+              <caret line="91" column="65" selection-start-line="91" selection-start-column="65" selection-end-line="91" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -288,12 +275,12 @@
       <workItem from="1533727459160" duration="178000" />
       <workItem from="1533730591537" duration="636000" />
       <workItem from="1533732283276" duration="69000" />
-      <workItem from="1533781194312" duration="10340000" />
+      <workItem from="1533781194312" duration="10625000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11223000" />
+    <option name="totallyTimeSpent" value="11508000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
@@ -476,8 +463,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="91" column="81" selection-start-line="91" selection-start-column="81" selection-end-line="91" selection-end-column="81" />
+        <state relative-caret-position="1365">
+          <caret line="91" column="65" selection-start-line="91" selection-start-column="65" selection-end-line="91" selection-end-column="65" />
         </state>
       </provider>
     </entry>
