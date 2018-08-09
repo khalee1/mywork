@@ -9,7 +9,7 @@ class Config
     public function load($config_name)
     {
         if (file_exists(SYS_PATH . '/common/'.$config_name. '.php')){
-            $config_array = include_once SYS_PATH . '/common/'.$config_name . '.php';
+            $config_array = require_once SYS_PATH . '/common/'.$config_name . '.php';
             if ( !empty($config_array) && is_array($config_array) ){
                 foreach ($config_array as $key => $item){
                     $this->config[$key] = $item;
@@ -20,12 +20,15 @@ class Config
         return FALSE;
     }
 
-    public function item($key, $defailt_val = '')
+    public function item($key, $defailt_val = null)
     {
         return isset($this->config[$key]) ? $this->config[$key] : $defailt_val;
     }
 
     public function set_item($key, $val){
         $this->config[$key] = $val;
+    }
+    public function get_config(){
+        $this->config();
     }
 }

@@ -4,6 +4,12 @@ use Kd\Core\Controller\Controller as Controller;
 
 class Works_Controller extends Controller
 {
+
+    public function checkDatetime($dayStart, $dayEnd){
+        $dayStart = new DateTime($dayStart);
+        $dayEnd = new DateTime($dayEnd);
+        return ($dayEnd>=$dayStart) ? true : FALSE ;
+    }
     /**
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/works/index
@@ -35,6 +41,7 @@ class Works_Controller extends Controller
             echo json_encode($data);
         }
     }
+
     /**
      * PAGE: add
      * This method handles what happens when you move to http://yourproject/works/add
@@ -42,16 +49,17 @@ class Works_Controller extends Controller
     public function add()
     {
         if (isset($_POST["submit_add_work"])) {
-            $d1 = new DateTime($_POST['start_date']);
-            $d2 = new DateTime($_POST['end_date']);
-            if ($d2 < $d1) {
+            if ($this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
+                if ($this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
+                    header('location: ' . URL . 'works/index');
+                } else {
+                    header('location: ' . URL . 'works/add');
+                }
+
+            }else{
                 header('location: ' . URL . "works/add?msgd=er");
             }
-            if ($this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
-                header('location: ' . URL . 'works/index');
-            } else {
-                header('location: ' . URL . 'works/add');
-            }
+
         } else {
             $list_status = $this->model->getAllStatus();
             require BASE_PATH . 'Views/Layouts/header.php';
@@ -77,18 +85,13 @@ class Works_Controller extends Controller
     public function edit()
     {
         if (isset($_POST["submit_edit_work"])) {
-
-            $d1 = new DateTime($_POST['start_date']);
-            $d2 = new DateTime($_POST['end_date']);
-            if ($d2 < $d1) {
-                header('location: ' . URL . "works/edit?msgd=er");
-
+            if ($this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
+                $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
+                header('location: ' . URL . 'works/index');
+            } else {
+                header('location: ' . URL . "works/edit?id=".$_POST['id_work']."&msgd=er");
             }
-            $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
-            header('location: ' . URL . 'works/index');
-
         } elseif (isset($_GET['id'])) {
-
             $work = $this->model->getWork($_GET['id']) ;
             if (empty($work))
                 header('location: ' . URL . 'works/index');
@@ -96,11 +99,8 @@ class Works_Controller extends Controller
             require BASE_PATH . 'Views/Layouts/header.php';
             require BASE_PATH . 'Views/works/edit.php';
             require BASE_PATH . 'Views/Layouts/footer.php';
-
         }
     }
-
-
     /**
      * ACTION: delete Work
      * This method handles what happens when you move to http://yourproject/works/delete/id
@@ -114,5 +114,4 @@ class Works_Controller extends Controller
         }
         header('location: ' . URL . 'works/index?msg=del');
     }
-
 }
