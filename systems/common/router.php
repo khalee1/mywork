@@ -1,6 +1,7 @@
 <?php
 $router = array(
     'default_controller' => 'home' ,
+    'default_action'     => 'index',
     'home'               => array('index' => 'index'),
     'works'              => array(  'index' => 'index' ,
                                     'add'  => 'add',

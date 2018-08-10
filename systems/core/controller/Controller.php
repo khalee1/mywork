@@ -31,10 +31,7 @@ class Controller
 
     private function openConnectionToDatabase($configDB)
     {
-        // set the (optional) options of the PDO connection. in this case, we set the fetch mode to
         $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
-
-        // generate a database connection, using the PDO connector
         $this->db = new PDO($configDB['type'] . ':host=' . $configDB['host'] . ';dbname=' . $configDB['schema'] . ';charset=' . $configDB['charset'], $configDB['user'], $configDB['pass'], $options);
     }
 }
