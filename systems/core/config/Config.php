@@ -8,21 +8,17 @@ class Config
 
     public function load($config_name)
     {
-        if (file_exists(SYS_PATH . '/common/'.$config_name. '.php')){
-
-            $config_array = require_once SYS_PATH . '/common/'.$config_name . '.php';
-
-            if ( !empty($config_array) && is_array($config_array) ){
-                foreach ($config_array as $key => $item){
-                    $this->config[$key] = $item;
-                }
-            }
-
-            return true;
-
+        if (!file_exists(SYS_PATH . '/common/'.$config_name. '.php')) {
+            return FALSE;
         }
-
-        return FALSE;
+        $config_array = require_once SYS_PATH . '/common/'.$config_name . '.php';
+        if (empty($config_array) || !is_array($config_array)){
+            return FALSE;
+        }
+        foreach ($config_array as $key => $item){
+                    $this->config[$key] = $item;
+        }
+        return true;
     }
 
     public function item($key, $defailt_val = null)

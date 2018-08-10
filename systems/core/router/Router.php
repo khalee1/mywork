@@ -16,11 +16,8 @@ class Router
     public function __construct()
     {
         self::$config = new Config();
-
         self::$config->load('router');
-
         $this->uri = new URI(true);
-
         $this->load();
     }
 
@@ -32,9 +29,6 @@ class Router
             die('No Controller');
         }
 
-        /**
-         *
-         */
         require_once BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php';
 
         if (!class_exists($this->class)) {
@@ -60,13 +54,9 @@ class Router
         }
 
         if (!empty($this->uri->url_params)) {
-
             call_user_func_array(array($controllerObject, $this->method), $this->uri->url_params);
-
         } else {
-
             $controllerObject->{$this->method}();
-
         }
     }
 }

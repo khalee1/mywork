@@ -110,6 +110,4 @@ class Work_DAO
 
         $query->execute($parameters);
     }
-
-
 }

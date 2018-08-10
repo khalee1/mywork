@@ -5,7 +5,6 @@ use Kd\Core\Controller\Controller as Controller;
 class Works_Controller extends Controller
 {
     public function checkDatetime($dayStart, $dayEnd){
-
         $dayStart = new DateTime($dayStart);
         $dayEnd = new DateTime($dayEnd);
 
@@ -51,17 +50,12 @@ class Works_Controller extends Controller
     public function add()
     {
         if (isset($_POST["submit_add_work"])) {
-
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-
-
                 header('location: ' . URL . "works/add?msgd=er");
                 return;
-
             }
 
             if (!$this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
-
                 header('location: ' . URL . 'works/add');
             }
 
@@ -79,9 +73,8 @@ class Works_Controller extends Controller
      */
     public function update()
     {
-        if(isset($_POST['id']))
-            if ($this->model->updateWorkByResize( $_POST['start'] ,$_POST['end'] , $_POST['id'])) {
-
+        if (isset($_POST['id']))
+            if ($this->model->updateWorkByResize($_POST['start'], $_POST['end'], $_POST['id'])) {
                 header('location: ' . URL . "works/index");
             }
     }
@@ -93,13 +86,11 @@ class Works_Controller extends Controller
     {
         if (isset($_POST["submit_edit_work"])) {
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-
                 header('location: ' . URL . "works/edit?id=". $_POST['id_work']."&msgd=er");
                 return;
             }
 
             $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
-
             header('location: ' . URL . 'works/index');
         }
 

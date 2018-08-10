@@ -20,7 +20,6 @@ $config['db'] = array(
     'charset'=> 'utf8',
     );
 
-
 /**
  * return config array and In core/config/Config.php you can get array.
  * similar router.php, ..

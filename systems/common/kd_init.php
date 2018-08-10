@@ -10,7 +10,6 @@
  * Configuration for: URL
  * Init Full Domain
  */
-
 define('URL_PUBLIC_FOLDER', 'public');
 define('URL_PROTOCOL', '//');
 define('URL_DOMAIN', $_SERVER['HTTP_HOST']);
