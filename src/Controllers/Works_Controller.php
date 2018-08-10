@@ -4,10 +4,11 @@ use Kd\Core\Controller\Controller as Controller;
 
 class Works_Controller extends Controller
 {
-
     public function checkDatetime($dayStart, $dayEnd){
+
         $dayStart = new DateTime($dayStart);
         $dayEnd = new DateTime($dayEnd);
+
         return ($dayEnd>=$dayStart) ? true : FALSE ;
     }
     /**
@@ -27,6 +28,7 @@ class Works_Controller extends Controller
     public function load()
     {
         $result = $this->model->getAllWork();
+
         if (count($result)>0) {
             $data = array();
             foreach ($result as $row) {
@@ -38,10 +40,10 @@ class Works_Controller extends Controller
                     'color' => $row->color
                 );
             }
+
             echo json_encode($data);
         }
     }
-
     /**
      * PAGE: add
      * This method handles what happens when you move to http://yourproject/works/add
@@ -49,23 +51,23 @@ class Works_Controller extends Controller
     public function add()
     {
         if (isset($_POST["submit_add_work"])) {
-            if ($this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-                if ($this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
-                    header('location: ' . URL . 'works/index');
-                } else {
-                    header('location: ' . URL . 'works/add');
-                }
+            if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
 
-            }else{
                 header('location: ' . URL . "works/add?msgd=er");
             }
+            if (!$this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
 
-        } else {
-            $list_status = $this->model->getAllStatus();
-            require BASE_PATH . 'Views/Layouts/header.php';
-            require BASE_PATH . 'Views/works/add.php';
-            require BASE_PATH . 'Views/Layouts/footer.php';
+                header('location: ' . URL . 'works/add');
+            }
+
+            header('location: ' . URL . 'works/index');
         }
+
+        $list_status = $this->model->getAllStatus();
+        require BASE_PATH . 'Views/Layouts/header.php';
+        require BASE_PATH . 'Views/works/add.php';
+        require BASE_PATH . 'Views/Layouts/footer.php';
+
     }
     /**
      * Action: update
@@ -73,28 +75,35 @@ class Works_Controller extends Controller
      */
     public function update()
     {
-          if(isset($_POST['id']))
+        if(isset($_POST['id']))
             if ($this->model->updateWorkByResize( $_POST['start'] ,$_POST['end'] , $_POST['id'])) {
+
                 header('location: ' . URL . "works/index");
             }
     }
     /**
      * PAGE: edit
-     * This method handles what happens when you move to http://yourproject/works/edit
+     * This method handles what happens when you move to http://yourproject/works/edit?id=number
      */
     public function edit()
     {
         if (isset($_POST["submit_edit_work"])) {
-            if ($this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-                $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
-                header('location: ' . URL . 'works/index');
-            } else {
+            if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
+
                 header('location: ' . URL . "works/edit?id=".$_POST['id_work']."&msgd=er");
             }
-        } elseif (isset($_GET['id'])) {
+            $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
+
+            header('location: ' . URL . 'works/index');
+        }
+        if (isset($_GET['id']))
+        {
             $work = $this->model->getWork($_GET['id']) ;
-            if (empty($work))
+
+            if (empty($work)) {
                 header('location: ' . URL . 'works/index');
+            }
+
             $list_status = $this->model->getAllStatus();
             require BASE_PATH . 'Views/Layouts/header.php';
             require BASE_PATH . 'Views/works/edit.php';
@@ -109,9 +118,9 @@ class Works_Controller extends Controller
     public function delete($work_id)
     {
         if (isset($work_id)) {
-
             $this->model->deleteWork($work_id);
         }
+
         header('location: ' . URL . 'works/index?msg=del');
     }
 }
