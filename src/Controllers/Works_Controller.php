@@ -8,7 +8,6 @@ class Works_Controller extends Controller
 
         $dayStart = new DateTime($dayStart);
         $dayEnd = new DateTime($dayEnd);
-       
 
         return ($dayStart>$dayEnd) ? FALSE : true ;
     }
@@ -73,8 +72,6 @@ class Works_Controller extends Controller
         require BASE_PATH . 'Views/Layouts/header.php';
         require BASE_PATH . 'Views/works/add.php';
         require BASE_PATH . 'Views/Layouts/footer.php';
-
-
     }
     /**
      * Action: update
