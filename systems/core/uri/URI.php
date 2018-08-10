@@ -9,8 +9,7 @@ class URI
     public $url_params = array();
     public $enable_query = true;
 
-    public function __construct($enable_query= true)
-    {
+    public function __construct($enable_query= true){
         $this->enable_query = $enable_query;
         $segment_args =$this->getURI();
         $this->url_controller = $segment_args[0];
@@ -22,8 +21,7 @@ class URI
     }
 
 
-    protected function getURI()
-    {
+    protected function getURI(){
         if (!isset($_SERVER['REQUEST_URI'])) {
             return array(
                 0 => 'home',
@@ -57,7 +55,7 @@ class URI
             die("No access query");
         }
 
-        if (empty(strpos($url[1], '?'))) {
+        if (empty($query_index)) {
 
             $action = $url[1];
 

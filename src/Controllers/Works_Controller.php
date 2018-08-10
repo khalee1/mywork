@@ -2,8 +2,8 @@
 
 use Kd\Core\Controller\Controller as Controller;
 
-class Works_Controller extends Controller
-{
+class Works_Controller extends Controller{
+
     public function checkDatetime($dayStart, $dayEnd){
         $dayStart = new DateTime($dayStart);
         $dayEnd = new DateTime($dayEnd);
@@ -14,8 +14,7 @@ class Works_Controller extends Controller
      * PAGE: index
      * This method handles what happens when you move to http://yourproject/works/index
      */
-    public function index()
-    {
+    public function index(){
         require BASE_PATH . 'Views/Layouts/header.php';
         require BASE_PATH . 'Views/works/index.php';
         require BASE_PATH . 'Views/Layouts/footer.php';
@@ -24,8 +23,7 @@ class Works_Controller extends Controller
      * Action: load
      * This method handles what happens when you move to http://yourproject/works/load
      */
-    public function load()
-    {
+    public function load(){
         $result = $this->model->getAllWork();
 
         if (count($result)>0) {
@@ -47,9 +45,8 @@ class Works_Controller extends Controller
      * PAGE: add
      * This method handles what happens when you move to http://yourproject/works/add
      */
-    public function add()
-    {
-        if (isset($_POST["submit_add_work"])) {
+    public function add(){
+        if (isset($_POST["submit_add_work"])){
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
                 header('location: ' . URL . "works/add?msgd=er");
                 return;
@@ -71,8 +68,7 @@ class Works_Controller extends Controller
      * Action: update
      * This method handles what happens when you move to http://yourproject/works/update
      */
-    public function update()
-    {
+    public function update(){
         if (isset($_POST['id']))
             if ($this->model->updateWorkByResize($_POST['start'], $_POST['end'], $_POST['id'])) {
                 header('location: ' . URL . "works/index");
@@ -82,8 +78,7 @@ class Works_Controller extends Controller
      * PAGE: edit
      * This method handles what happens when you move to http://yourproject/works/edit?id=number
      */
-    public function edit()
-    {
+    public function edit(){
         if (isset($_POST["submit_edit_work"])) {
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
                 header('location: ' . URL . "works/edit?id=". $_POST['id_work']."&msgd=er");
@@ -94,8 +89,7 @@ class Works_Controller extends Controller
             header('location: ' . URL . 'works/index');
         }
 
-        if (isset($_GET['id']))
-        {
+        if (isset($_GET['id'])) {
             $work = $this->model->getWork($_GET['id']) ;
 
             if (empty($work)) {
@@ -113,8 +107,7 @@ class Works_Controller extends Controller
      * This method handles what happens when you move to http://yourproject/works/delete/id
      * @param int $work_id Id of the to-delete work
      */
-    public function delete($work_id)
-    {
+    public function delete($work_id){
         if (isset($work_id)) {
             $this->model->deleteWork($work_id);
         }

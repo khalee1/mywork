@@ -6,8 +6,7 @@ class Config
 {
     protected $config = array();
 
-    public function load($config_name)
-    {
+    public function load($config_name){
         if (!file_exists(SYS_PATH . '/common/'.$config_name. '.php')) {
             return FALSE;
         }
@@ -16,19 +15,19 @@ class Config
             return FALSE;
         }
         foreach ($config_array as $key => $item){
-                    $this->config[$key] = $item;
+            $this->config[$key] = $item;
         }
         return true;
     }
 
-    public function item($key, $defailt_val = null)
-    {
+    public function item($key, $defailt_val = null){
         return isset($this->config[$key]) ? $this->config[$key] : $defailt_val;
     }
 
     public function set_item($key, $val){
         $this->config[$key] = $val;
     }
+
     public function get_config(){
         $this->config();
     }
