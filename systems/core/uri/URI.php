@@ -22,7 +22,7 @@ class URI
 
 
     protected function getURI(){
-        if (!isset($_SERVER['REQUEST_URI'])) {
+        if (empty($_SERVER['REQUEST_URI'])) {
             return array(
                 0 => 'home',
                 1 => 'index'
