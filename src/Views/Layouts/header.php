@@ -73,7 +73,7 @@
                 {
 
                         var id = event.id;
-                         window.location="<?php echo URL; ?>/works/edit?id="+id;
+                         window.location="<?php echo URL; ?>works/edit?id="+id;
                 },
 
             });

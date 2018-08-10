@@ -8,8 +8,9 @@ class Works_Controller extends Controller
 
         $dayStart = new DateTime($dayStart);
         $dayEnd = new DateTime($dayEnd);
+       
 
-        return ($dayEnd>=$dayStart) ? true : FALSE ;
+        return ($dayStart>$dayEnd) ? FALSE : true ;
     }
     /**
      * PAGE: index
@@ -51,10 +52,15 @@ class Works_Controller extends Controller
     public function add()
     {
         if (isset($_POST["submit_add_work"])) {
+
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
 
+
                 header('location: ' . URL . "works/add?msgd=er");
+                return;
+
             }
+
             if (!$this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
 
                 header('location: ' . URL . 'works/add');
@@ -67,6 +73,7 @@ class Works_Controller extends Controller
         require BASE_PATH . 'Views/Layouts/header.php';
         require BASE_PATH . 'Views/works/add.php';
         require BASE_PATH . 'Views/Layouts/footer.php';
+
 
     }
     /**
@@ -90,12 +97,15 @@ class Works_Controller extends Controller
         if (isset($_POST["submit_edit_work"])) {
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
 
-                header('location: ' . URL . "works/edit?id=".$_POST['id_work']."&msgd=er");
+                header('location: ' . URL . "works/edit?id=". $_POST['id_work']."&msgd=er");
+                return;
             }
+
             $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
 
             header('location: ' . URL . 'works/index');
         }
+
         if (isset($_GET['id']))
         {
             $work = $this->model->getWork($_GET['id']) ;
