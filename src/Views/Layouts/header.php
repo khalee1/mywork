@@ -71,9 +71,7 @@
 
                 eventClick:function(event)
                 {
-
-                        var id = event.id;
-                         window.location="<?php echo URL; ?>works/edit?id="+id;
+                        window.location="<?php echo URL; ?>works/edit/"+event.id;
                 },
 
             });
@@ -83,9 +81,6 @@
 
 </head>
 <body>
-
-
-
     <!-- navigation -->
     <div class="navigation">
         <a href="<?php echo URL; ?>">home</a>

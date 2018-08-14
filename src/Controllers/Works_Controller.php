@@ -78,29 +78,27 @@ class Works_Controller extends Controller{
      * PAGE: edit
      * This method handles what happens when you move to http://yourproject/works/edit?id=number
      */
-    public function edit(){
+    public function edit($id_work){
         if (isset($_POST["submit_edit_work"])) {
             if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-                header('location: ' . URL . "works/edit?id=". $_POST['id_work']."&msgd=er");
+                header('location: ' . URL . "works/edit/".$id_work."?msgd=er");
                 return;
             }
 
-            $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
+            $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $id_work);
+            header('location: ' . URL . 'works/index');
+            return;
+        }
+        $work = $this->model->getWork($id_work) ;
+
+        if (empty($work)) {
             header('location: ' . URL . 'works/index');
         }
 
-        if (isset($_GET['id'])) {
-            $work = $this->model->getWork($_GET['id']) ;
-
-            if (empty($work)) {
-                header('location: ' . URL . 'works/index');
-            }
-
-            $list_status = $this->model->getAllStatus();
-            require BASE_PATH . 'Views/Layouts/header.php';
-            require BASE_PATH . 'Views/works/edit.php';
-            require BASE_PATH . 'Views/Layouts/footer.php';
-        }
+        $list_status = $this->model->getAllStatus();
+        require BASE_PATH . 'Views/Layouts/header.php';
+        require BASE_PATH . 'Views/works/edit.php';
+        require BASE_PATH . 'Views/Layouts/footer.php';
     }
     /**
      * ACTION: delete Work

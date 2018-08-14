@@ -20,26 +20,24 @@ class URI
         }
     }
 
+    public function getUrlHaveQuery($url){
+        $url = explode('?', $url);
+        $params_parse = [];
+        parse_str($url[1], $params_parse);
 
-    protected function getURI(){
-        if (empty($_SERVER['REQUEST_URI'])) {
-            return array(
-                0 => 'home',
-                1 => 'index'
-            );
+        $url_array = $this->getUrlHaveNoQuery($url[0]);
+
+        if(isset($url_array[2])){
+            $url_array[2] = array_merge($url_array[2], $params_parse);
         }
+        else{
+            $url_array[2] = $params_parse;
+        }
+        return $url_array;
+    }
 
-        $url = trim($_SERVER['REQUEST_URI'], '/');
-        $url = filter_var($url, FILTER_SANITIZE_URL);
+    public function getUrlHaveNoQuery($url){
         $url = explode('/', $url);
-
-        if (empty($url[0])) {
-            return array(
-                0 => 'home',
-                1 => 'index'
-            );
-        }
-
         $controller = $url[0];
 
         if (empty($url[1])) {
@@ -49,35 +47,37 @@ class URI
             );
         }
 
-        $query_index = strpos($url[1], '?');
+        $action = $url[1];
+
+        unset($url[0], $url[1]);
+
+        return array(
+            0 => $controller,
+            1 => $action,
+            2 => array_values($url)
+        );
+    }
+
+    protected function getURI(){
+        $url = trim($_SERVER['REQUEST_URI'], '/');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
+
+        if (empty($url)) {
+            return array(
+                0 => 'home',
+                1 => 'index'
+            );
+        }
+
+        $query_index = strpos($url, '?');
 
         if (!$this->enable_query && !empty($query_index)){
             die("No access query");
         }
 
-        if (empty($query_index)) {
-
-            $action = $url[1];
-
-            unset($url[0], $url[1]);
-
-            return array(
-                0 => $controller,
-                1 => $action,
-                2 => array_values($url)
-            );
+        if(empty($query_index)){
+            return $this->getUrlHaveNoQuery($url);
         }
-
-        $action = substr($url[1], 0, strpos($url[1], '?'));
-
-        $params = substr($url[1], strpos($url[1], '?') + 1);
-        $params_parse = [];
-        parse_str($params, $params_parse);
-
-        return array(
-            0 => $controller,
-            1 => $action,
-            2 => $params_parse
-        );
+        return $this->getUrlHaveQuery($url);
     }
 }

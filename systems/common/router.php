@@ -1,4 +1,5 @@
 <?php
+//key of router array is url and value is action in controller
 $router = array(
     'default_controller' => 'home' ,
     'default_action'     => 'index',
