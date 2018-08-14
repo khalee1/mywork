@@ -9,9 +9,10 @@ class URI
     public $url_params = array();
     public $enable_query = true;
 
-    public function __construct($enable_query= true){
+    public function __construct($enable_query = true)
+    {
         $this->enable_query = $enable_query;
-        $segment_args =$this->getURI();
+        $segment_args = $this->getURI();
         $this->url_controller = $segment_args[0];
         $this->url_action = $segment_args[1];
 
@@ -20,23 +21,25 @@ class URI
         }
     }
 
-    public function getUrlHaveQuery($url){
+    public function getUrlHaveQuery($url)
+    {
         $url = explode('?', $url);
         $params_parse = [];
         parse_str($url[1], $params_parse);
 
         $url_array = $this->getUrlHaveNoQuery($url[0]);
 
-        if(isset($url_array[2])){
+        if (isset($url_array[2])) {
             $url_array[2] = array_merge($url_array[2], $params_parse);
-        }
-        else{
+        } else {
             $url_array[2] = $params_parse;
         }
+
         return $url_array;
     }
 
-    public function getUrlHaveNoQuery($url){
+    public function getUrlHaveNoQuery($url)
+    {
         $url = explode('/', $url);
         $controller = $url[0];
 
@@ -48,7 +51,6 @@ class URI
         }
 
         $action = $url[1];
-
         unset($url[0], $url[1]);
 
         return array(
@@ -58,7 +60,8 @@ class URI
         );
     }
 
-    protected function getURI(){
+    protected function getURI()
+    {
         $url = trim($_SERVER['REQUEST_URI'], '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
 
@@ -71,13 +74,14 @@ class URI
 
         $query_index = strpos($url, '?');
 
-        if (!$this->enable_query && !empty($query_index)){
+        if (!$this->enable_query && !empty($query_index)) {
             die("No access query");
         }
 
-        if(empty($query_index)){
+        if (empty($query_index)) {
             return $this->getUrlHaveNoQuery($url);
         }
+
         return $this->getUrlHaveQuery($url);
     }
 }

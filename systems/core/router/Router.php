@@ -12,14 +12,16 @@ class Router
     public $class = '';
     public $method = 'index';
 
-    public function __construct(){
+    public function __construct()
+    {
         self::$config = new Config();
         self::$config->load('router');
         $this->uri = new URI(true);
         $this->load();
     }
 
-    protected function load(){
+    protected function load()
+    {
         $this->class = ucfirst($this->uri->url_controller) . "_Controller";
 
         if (!file_exists(BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php')) {
