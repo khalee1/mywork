@@ -8,6 +8,7 @@
 
 namespace Kd\Core\Verify;
 
+use Kd\Core\Verify\PostException as PostEx;
 
 class Verify_Data
 {
@@ -20,8 +21,11 @@ class Verify_Data
      *
      * @author khaln@tech.est-rouge.com
      */
-    static function checkIsNumber($number)
+    static function checkIsNumberGreaterThanZero($number)
     {
+        if (!filter_var($number, FILTER_VALIDATE_INT))
+            throw  new \Exception("It must be number");
+
         if ($number<=0)
             throw  new \Exception("Input must greater than 0");
 
@@ -74,14 +78,14 @@ class Verify_Data
      *
      * @return bool
      *
-     * @throws \Exception("$key not null")
+     * @throws \Kd\Core\Verify\PostException("$key not null")
      *
      * @author khaln@tech.est-rouge.com
      */
     static function checkPost($listKey, $post)
     {
         foreach ($listKey as $key) {
-            if (empty($post[$key])) throw new \Exception("$key not null");
+            if (empty($post[$key])) throw new PostEx("$key not null");
         }
         return true;
     }

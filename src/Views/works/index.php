@@ -5,6 +5,9 @@
     if(strcmp($_GET['msg'], 'del') == 0) {
         echo "<p align=\"center\" style='color : #342eff'> Delete success</p>";
     }
+    if(strcmp($_GET['msg'], 'err') == 0) {
+        echo "<p align=\"center\" style='color : #FF162A'> Error</p>";
+    }
 }  ?>
 <div class="container">
     <button type="button"><a href="<?php echo URL; ?>works/add">Add work<a/></button>

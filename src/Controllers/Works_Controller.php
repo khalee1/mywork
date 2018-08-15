@@ -4,6 +4,7 @@ use Kd\Core\Controller\Controller as Controller;
 use Kd\Core\Verify\Verify_Data as Verify;
 use Kd\Models\Entities\Works as Works;
 use Kd\Models\DAO\Work_DAO as Work_DAO;
+use Kd\Core\Verify\PostException as PostEx;
 
 class Works_Controller extends Controller
 {
@@ -17,8 +18,14 @@ class Works_Controller extends Controller
     }
 
     /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/works/index
+     * Render works index page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
     public function index()
     {
@@ -28,8 +35,14 @@ class Works_Controller extends Controller
     }
 
     /**
-     * Action: load
-     * This method handles what happens when you move to http://yourproject/works/load
+     * Load data for works index page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
     public function loadData()
     {
@@ -52,8 +65,14 @@ class Works_Controller extends Controller
     }
 
     /**
-     * PAGE: add
-     * This method handles what happens when you move to http://yourproject/works/add
+     * Add work page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
     public function addWork()
     {
@@ -70,8 +89,8 @@ class Works_Controller extends Controller
 
             $this->view->to('works/index');
 
+        } catch (PostEx $exception) {
         } catch (Exception $exception) {
-            var_dump($_POST);
             $data['message'] = $exception->getMessage();
         }
 
@@ -82,8 +101,14 @@ class Works_Controller extends Controller
     }
 
     /**
-     * Action: update
-     * This method handles what happens when you move to http://yourproject/works/update
+     * Update Work by resize or drop event in calendar
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
     public function ajaxUpdate()
     {
@@ -106,8 +131,14 @@ class Works_Controller extends Controller
     }
 
     /**
-     * PAGE: edit
-     * This method handles what happens when you move to http://yourproject/works/edit/id
+     * Edit work page
+     *
+     * @param int $workId
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
     public function editWork($workId)
     {
@@ -115,9 +146,7 @@ class Works_Controller extends Controller
         $data = [];
         try {
             Verify::checkNotNull($workId);
-
-            $workId = (int)$workId;
-            Verify::checkIsNumber($workId);
+            Verify::checkIsNumberGreaterThanZero($workId);
 
             $work = $this->workModel->getWork($workId);
             Verify::checkNotNull($work);
@@ -139,6 +168,7 @@ class Works_Controller extends Controller
                 throw new \Exception("Add Work Fail");
 
             $this->view->to('works/index');
+        } catch (PostEx $exception) {
         } catch (Exception $exception) {
             $data['message'] = $exception->getMessage();
         }
@@ -162,14 +192,14 @@ class Works_Controller extends Controller
     {
         try {
             Verify::checkNotNull($workId);
-            Verify::checkIsNumber($workId);
+            Verify::checkIsNumberGreaterThanZero($workId);
+            Verify::checkNotNull($this->workModel->getWork($workId));
 
-            if (!$this->workModel->deleteWork($workId))
-                throw new Exception("Delete Fail");
+            $this->workModel->deleteWork($workId);
 
             $this->view->to('works/index?msg=del');
         } catch (Exception $exception) {
-            $data['message'] = $exception->getMessage();
+            $this->view->to('works/index?msg=err');
         }
 
 
