@@ -1,14 +1,15 @@
 <?php
 //key of router array is url and value is action in controller
-$router = array(
-    'default_controller' => 'home' ,
-    'default_action'     => 'index',
-    'home'               => array('index' => 'index'),
-    'works'              => array(  'index' => 'index' ,
-                                    'add'  => 'add',
-                                    'load' => 'load',
-                                    'update' => 'update',
-                                    'delete'  =>  'delete',
-                                    'edit' => 'edit')
-);
+$router['default_controller'] = 'home';
+
+$router['default_action'] = 'index';
+
+$router['home'] = array('index' => 'index');
+
+$router['works'] = array('index' => 'index',
+                        'add'  => 'addWork',
+                        'load' => 'loadData',
+                        'update' => 'ajaxUpdate',
+                        'delete'  =>  'deleteWork',
+                        'edit' => 'editWork');
 return $router;

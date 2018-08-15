@@ -4,38 +4,41 @@ namespace Kd\Core\URI;
 
 class URI
 {
-    public $url_controller = '';
-    public $url_action = '';
-    public $url_params = array();
-    public $enable_query = true;
+    public $urlController = '';
 
-    public function __construct($enable_query = true)
+    public $urlAction = '';
+
+    public $urlParams = array();
+
+    public $enableQuery = true;
+
+    public function __construct($enableQuery = true)
     {
-        $this->enable_query = $enable_query;
-        $segment_args = $this->getURI();
-        $this->url_controller = $segment_args[0];
-        $this->url_action = $segment_args[1];
+        $this->enableQuery = $enableQuery;
+        $segmentArgs = $this->getURI();
+        $this->urlController = $segmentArgs[0];
+        $this->urlAction = $segmentArgs[1];
 
-        if (isset($segment_args[2])) {
-            $this->url_params = $segment_args[2];
+        if (isset($segmentArgs[2])) {
+            $this->urlParams = $segmentArgs[2];
         }
     }
 
     public function getUrlHaveQuery($url)
     {
         $url = explode('?', $url);
-        $params_parse = [];
-        parse_str($url[1], $params_parse);
+        $paramsParse = [];
+        parse_str($url[1], $paramsParse);
 
-        $url_array = $this->getUrlHaveNoQuery($url[0]);
+        $urlArray = $this->getUrlHaveNoQuery($url[0]);
 
-        if (isset($url_array[2])) {
-            $url_array[2] = array_merge($url_array[2], $params_parse);
+        if (isset($urlArray[2])) {
+            $urlArray[2] = array_merge($urlArray[2], $paramsParse);
         } else {
-            $url_array[2] = $params_parse;
+            $urlArray[2] = $paramsParse;
         }
 
-        return $url_array;
+        return $urlArray;
     }
 
     public function getUrlHaveNoQuery($url)
@@ -72,13 +75,13 @@ class URI
             );
         }
 
-        $query_index = strpos($url, '?');
+        $queryIndex = strpos($url, '?');
 
-        if (!$this->enable_query && !empty($query_index)) {
+        if (!$this->enableQuery && !empty($queryIndex)) {
             die("No access query");
         }
 
-        if (empty($query_index)) {
+        if (empty($queryIndex)) {
             return $this->getUrlHaveNoQuery($url);
         }
 

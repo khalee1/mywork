@@ -6,8 +6,8 @@ class Home_Controller extends Controller
 {
     public function index()
     {
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/home/index.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('home/index');
+        $this->view->renderView('Layouts/footer');
     }
 }

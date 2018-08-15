@@ -1,12 +1,5 @@
 <?php defined('SYS_PATH') OR exit('No direct script access allowed');
 /**
- * Created by PhpStorm.
- * User: lenguyenkha
- * Date: 8/7/18
- * Time: 3:58 PM
- */
-
-/**
  * Configuration for: DB ,  .. (continue )
  * This is the place where you define your database credentials, database type etcdevelop ,v.v...
  * Exam : You want config to Database with parameter such as ( type, host , schema... )

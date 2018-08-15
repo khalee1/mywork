@@ -13,10 +13,8 @@
     </script>
     <div>
         <h3>Add a work</h3>
-        <?php if (isset($_GET['msgd'])) {
-            if (strcmp($_GET['msgd'], 'er') == 0) {
-                echo "<p style='color : red'> Start Date than less End Date </p>";
-            }
+        <?php if (isset($message)) {
+                echo "<p style='color : red'> $message</p>";
         } ?>
         <form action="<?php echo URL; ?>works/add" method="POST">
             <div class="row">
@@ -79,7 +77,7 @@
                         <div class="col-sm-5">
                             <div class="input-group">
                                 <select name="id_status" required>
-                                    <?php foreach ($list_status as $status) { ?>
+                                    <?php foreach ($listStatus as $status) { ?>
                                         <option value="<?php if (isset($status->id)) echo htmlspecialchars($status->id, ENT_QUOTES, 'UTF-8'); ?>">
                                             <?php if (isset($status->status_name)) echo htmlspecialchars($status->status_name, ENT_QUOTES, 'UTF-8'); ?>
                                         </option>

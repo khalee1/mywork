@@ -4,6 +4,7 @@ namespace Kd\Core\Config;
 
 class Config
 {
+
     protected $config = array();
 
     public function load($config_name){

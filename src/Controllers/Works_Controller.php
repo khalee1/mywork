@@ -1,16 +1,19 @@
 <?php
 
 use Kd\Core\Controller\Controller as Controller;
+use Kd\Core\Verify\Verify_Data as Verify;
+use Kd\Models\Entities\Works as Works;
+use Kd\Models\DAO\Work_DAO as Work_DAO;
 
 class Works_Controller extends Controller
 {
 
-    public function checkDatetime($dayStart, $dayEnd)
-    {
-        $dayStart = new DateTime($dayStart);
-        $dayEnd = new DateTime($dayEnd);
+    private $workModel = null;
 
-        return ($dayStart > $dayEnd) ? FALSE : true;
+    public function __construct()
+    {
+        parent::__construct();
+        $this->workModel = new Work_DAO($this->db);
     }
 
     /**
@@ -19,18 +22,18 @@ class Works_Controller extends Controller
      */
     public function index()
     {
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/works/index.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('works/index');
+        $this->view->renderView('Layouts/footer');
     }
 
     /**
      * Action: load
      * This method handles what happens when you move to http://yourproject/works/load
      */
-    public function load()
+    public function loadData()
     {
-        $result = $this->model->getAllWork();
+        $result = $this->workModel->getAllWork();
 
         if (count($result) > 0) {
             $data = array();
@@ -52,78 +55,123 @@ class Works_Controller extends Controller
      * PAGE: add
      * This method handles what happens when you move to http://yourproject/works/add
      */
-    public function add()
+    public function addWork()
     {
-        if (isset($_POST["submit_add_work"])) {
-            if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-                header('location: ' . URL . "works/add?msgd=er");
-                return;
-            }
+        try {
+            $listKey = array('submit_add_work', 'work_name', 'start_date', 'end_date', 'id_status');
 
-            if (!$this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
-                header('location: ' . URL . 'works/add');
-            }
+            Verify::checkPost($listKey, $_POST);
+            Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
 
-            header('location: ' . URL . 'works/index');
+            $work = new Works('', $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
+
+            if (!$this->workModel->addWork($work))
+                throw new \Exception("Add Work Fail");
+
+            $this->view->to('works/index');
+
+        } catch (Exception $exception) {
+            var_dump($_POST);
+            $data['message'] = $exception->getMessage();
         }
 
-        $list_status = $this->model->getAllStatus();
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/works/add.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
+        $data['listStatus'] = $this->workModel->getAllStatus();
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('works/add', $data);
+        $this->view->renderView('Layouts/footer');
     }
 
     /**
      * Action: update
      * This method handles what happens when you move to http://yourproject/works/update
      */
-    public function update()
+    public function ajaxUpdate()
     {
-        if (isset($_POST['id']))
-            if ($this->model->updateWorkByResize($_POST['start'], $_POST['end'], $_POST['id'])) {
-                header('location: ' . URL . "works/index");
-            }
+        try {
+            $listKey = array('id', 'start', 'end');
+
+            Verify::checkPost($listKey, $_POST);
+            Verify::checkIsDateStartLessThanDateEnd($_POST['start'], $_POST['end']);
+
+            $work = new Works($_POST['id'], '', $_POST['start'], $_POST['end'], '');
+
+            if (!$this->workModel->updateWorkByResize($work))
+                throw new Exception("Update Resize Fail");
+
+            $this->view->to('works/index');
+
+        } catch (Exception $exception) {
+            $data['message'] = $exception->getMessage();
+        }
     }
 
     /**
      * PAGE: edit
-     * This method handles what happens when you move to http://yourproject/works/edit?id=number
+     * This method handles what happens when you move to http://yourproject/works/edit/id
      */
-    public function edit($id_work)
+    public function editWork($workId)
     {
-        if (isset($_POST["submit_edit_work"])) {
-            if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-                header('location: ' . URL . "works/edit/" . $id_work . "?msgd=er");
-                return;
-            }
+        $work = null;
+        $data = [];
+        try {
+            Verify::checkNotNull($workId);
 
-            $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'], $id_work);
-            header('location: ' . URL . 'works/index');
-            return;
+            $workId = (int)$workId;
+            Verify::checkIsNumber($workId);
+
+            $work = $this->workModel->getWork($workId);
+            Verify::checkNotNull($work);
+
+            $data['work'] = $work;
+        } catch (Exception $exception) {
+            $this->view->to('works/index');
         }
-        $work = $this->model->getWork($id_work);
 
-        if (empty($work)) {
-            header('location: ' . URL . 'works/index');
+        try {
+            $listKey = array('submit_edit_work', 'work_name', 'start_date', 'end_date', 'id_status');
+
+            Verify::checkPost($listKey, $_POST);
+            Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
+
+            $workEdit = new Works($workId, $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
+
+            if (!$this->workModel->updateWorkByEdit($workEdit))
+                throw new \Exception("Add Work Fail");
+
+            $this->view->to('works/index');
+        } catch (Exception $exception) {
+            $data['message'] = $exception->getMessage();
         }
 
-        $list_status = $this->model->getAllStatus();
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/works/edit.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
+        $data['listStatus'] = $this->workModel->getAllStatus();
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('works/edit', $data);
+        $this->view->renderView('Layouts/footer');
     }
 
     /**
-     * ACTION: delete Work
-     * This method handles what happens when you move to http://yourproject/works/delete/id
-     * @param int $work_id Id of the to-delete work
+     * Delete work
+     *
+     * @param int $workId
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
      */
-    public function delete($work_id)
+    public function deleteWork($workId)
     {
-        if (isset($work_id)) {
-            $this->model->deleteWork($work_id);
+        try {
+            Verify::checkNotNull($workId);
+            Verify::checkIsNumber($workId);
+
+            if (!$this->workModel->deleteWork($workId))
+                throw new Exception("Delete Fail");
+
+            $this->view->to('works/index?msg=del');
+        } catch (Exception $exception) {
+            $data['message'] = $exception->getMessage();
         }
 
-        header('location: ' . URL . 'works/index?msg=del');
+
     }
 }

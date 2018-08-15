@@ -23,6 +23,12 @@ require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'uri' . DIRECTORY_SEPARAT
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_SEPARATOR . 'Controller.php';
 //load Config
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Config.php';
+//load Config
+require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify_data' . DIRECTORY_SEPARATOR . 'Verify_Data.php';
+//load Config
+require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'RenderView.php';
+//load Config
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'entities' . DIRECTORY_SEPARATOR . 'Works.php';
 //load DAO (working with DB)
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Work_DAO.php';
 

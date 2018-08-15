@@ -7,9 +7,13 @@ use Kd\Core\Config\Config as Config;
 
 class Router
 {
+
     protected static $config = null;
+
     public $uri = null;
+
     public $class = '';
+
     public $method = 'index';
 
     public function __construct()
@@ -17,12 +21,12 @@ class Router
         self::$config = new Config();
         self::$config->load('router');
         $this->uri = new URI(true);
-        $this->load();
+        $this->loadRouter();
     }
 
-    protected function load()
+    protected function loadRouter()
     {
-        $this->class = ucfirst($this->uri->url_controller) . "_Controller";
+        $this->class = ucfirst($this->uri->urlController) . "_Controller";
 
         if (!file_exists(BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php')) {
             die('No Controller');
@@ -34,17 +38,17 @@ class Router
             die ('No found  controller');
         }
 
-        $temp_item_router = self::$config->item($this->uri->url_controller);
+        $tmpRouterItem = self::$config->item($this->uri->urlController);
 
-        if (empty($temp_item_router)) {
+        if (empty($tmpRouterItem)) {
             die('Not found config controller in router');
         }
 
-        if (!isset($temp_item_router[$this->uri->url_action])) {
+        if (!isset($tmpRouterItem[$this->uri->urlAction])) {
             die('Not found method in router');
         }
 
-        $this->method = $temp_item_router[$this->uri->url_action];
+        $this->method = $tmpRouterItem[$this->uri->urlAction];
 
         $controllerObject = new $this->class();
 
@@ -52,10 +56,11 @@ class Router
             die ('No action');
         }
 
-        if (!empty($this->uri->url_params)) {
-            call_user_func_array(array($controllerObject, $this->method), $this->uri->url_params);
-        } else {
+        if (empty($this->uri->urlParams)) {
             $controllerObject->{$this->method}();
+            return;
         }
+
+        call_user_func_array(array($controllerObject, $this->method), $this->uri->urlParams);
     }
 }
