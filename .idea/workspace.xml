@@ -68,7 +68,7 @@
           <entry key="htaccess" value="5" />
           <entry key="json" value="4" />
           <entry key="md" value="1" />
-          <entry key="php" value="373" />
+          <entry key="php" value="379" />
           <entry key="sql" value="1" />
           <entry key="yml" value="1" />
         </counts>
@@ -77,7 +77,7 @@
         <counts>
           <entry key="JSON" value="4" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="373" />
+          <entry key="PHP" value="379" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="1" />
           <entry key="YAML" value="1" />
@@ -118,31 +118,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/systems/models/DAO/Status_DAO.php">
+        <entry file="file://$PROJECT_DIR$/systems/core/controller/Controller.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systems/models/entities/Status.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="44" column="33" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systems/models/BLL/Work_BLL.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1189">
-              <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
-              <folding>
-                <element signature="e#120#147#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -186,7 +165,6 @@
         <option value="$PROJECT_DIR$/systems/common/config.php" />
         <option value="$PROJECT_DIR$/systems/common/router.php" />
         <option value="$PROJECT_DIR$/systems/core/config/Config.php" />
-        <option value="$PROJECT_DIR$/systems/core/controller/Controller.php" />
         <option value="$PROJECT_DIR$/systems/models/DAO/GetConnectionAdapter.php" />
         <option value="$PROJECT_DIR$/systems/models/DAO/DatabaseAdapter.php" />
         <option value="$PROJECT_DIR$/systems/models/DAO/Work_DAO.php" />
@@ -201,6 +179,7 @@
         <option value="$PROJECT_DIR$/src/Controllers/Works_Controller.php" />
         <option value="$PROJECT_DIR$/src/Views/works/edit.php" />
         <option value="$PROJECT_DIR$/systems/models/DAO/Status_DAO.php" />
+        <option value="$PROJECT_DIR$/systems/core/controller/Controller.php" />
       </list>
     </option>
   </component>
@@ -296,26 +275,6 @@
               <item name="mywork" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-              <item name="Layouts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-              <item name="works" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
@@ -492,7 +451,7 @@
       <workItem from="1533883644823" duration="522000" />
       <workItem from="1533884290852" duration="367000" />
       <workItem from="1533887254163" duration="47206000" />
-      <workItem from="1534383194676" duration="15779000" />
+      <workItem from="1534383194676" duration="15894000" />
     </task>
     <servers />
   </component>
@@ -529,7 +488,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88603000" />
+    <option name="totallyTimeSpent" value="88718000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -726,13 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systems/core/uri/URI.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
@@ -759,13 +711,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/ModelsDAO.php">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/core/controller/Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systems/core/View/RenderView.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -808,20 +753,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="837">
-          <caret line="63" column="77" selection-start-line="63" selection-start-column="77" selection-end-line="63" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/DAO/ModelDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/Database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="582">
@@ -839,16 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/BLL/Work_BLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1189">
-          <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
-          <folding>
-            <element signature="e#120#147#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systems/models/BLL/Status_BLL.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -856,16 +777,6 @@
           <folding>
             <element signature="e#6#93#0#PHP" expanded="true" />
             <element signature="e#122#151#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2460">
-          <caret line="164" column="47" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
-          <folding>
-            <element signature="e#7#55#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -917,10 +828,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/systems/models/DAO/ModelDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="51" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/models/BLL/Work_BLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="102" column="39" lean-forward="true" selection-start-line="102" selection-start-column="39" selection-end-line="102" selection-end-column="39" />
+          <folding>
+            <element signature="e#120#147#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/Status_DAO.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="164" column="47" selection-start-line="164" selection-start-column="47" selection-end-line="164" selection-end-column="47" />
+          <folding>
+            <element signature="e#7#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="945">
+          <caret line="63" column="77" selection-start-line="63" selection-start-column="77" selection-end-line="63" selection-end-column="77" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/core/controller/Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
         </state>
       </provider>
     </entry>
