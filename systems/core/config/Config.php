@@ -52,15 +52,15 @@ class Config
      *
      * @param string $key
      *
-     * @param  array $defailt_val
+     * @param  array $defaultVal
      *
      * @return boolean
      *
      * @author khaln@tech.est-rouge.com
      *
      */
-    public function item($key, $defailt_val = null)
+    public function item($key, $defaultVal = null)
     {
-        return isset($this->config[$key]) ? $this->config[$key] : $defailt_val;
+        return isset($this->config[$key]) ? $this->config[$key] : $defaultVal;
     }
 }

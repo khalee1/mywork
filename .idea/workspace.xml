@@ -7,15 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c085240-74b9-4412-9ed2-b5910ec19fd7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/common/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/common/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/common/router.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/common/router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/View/RenderView.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/View/RenderView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/systems/core/config/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/config/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/controller/Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/controller/Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/router/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/router/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/uri/URI.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/uri/URI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/verify_data/Verify_Data.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/verify_data/Verify_Data.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -61,7 +53,7 @@
           <entry key="htaccess" value="5" />
           <entry key="json" value="4" />
           <entry key="md" value="1" />
-          <entry key="php" value="283" />
+          <entry key="php" value="284" />
           <entry key="sql" value="1" />
           <entry key="yml" value="1" />
         </counts>
@@ -70,7 +62,7 @@
         <counts>
           <entry key="JSON" value="4" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="283" />
+          <entry key="PHP" value="284" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="1" />
           <entry key="YAML" value="1" />
@@ -82,7 +74,7 @@
           <entry key="gitignore" value="2" />
           <entry key="htaccess" value="1" />
           <entry key="json" value="3" />
-          <entry key="php" value="10349" />
+          <entry key="php" value="10362" />
           <entry key="sql" value="6" />
           <entry key="txt" value="65" />
         </counts>
@@ -90,7 +82,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="3" />
-          <entry key="PHP" value="10261" />
+          <entry key="PHP" value="10274" />
           <entry key="PLAIN_TEXT" value="67" />
           <entry key="SQL" value="94" />
           <entry key="htaccess" value="1" />
@@ -110,29 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/systems/core/View/RenderView.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="50" column="27" selection-start-line="50" selection-start-column="27" selection-end-line="50" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/systems/common/router.php">
+        <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            <state relative-caret-position="567">
+              <caret line="63" column="77" selection-start-line="63" selection-start-column="77" selection-end-line="63" selection-end-column="77" />
             </state>
           </provider>
         </entry>
@@ -179,11 +153,11 @@
         <option value="$PROJECT_DIR$/systems/core/uri/URI.php" />
         <option value="$PROJECT_DIR$/systems/core/View/RenderView.php" />
         <option value="$PROJECT_DIR$/systems/models/entities/Works.php" />
-        <option value="$PROJECT_DIR$/systems/core/config/Config.php" />
         <option value="$PROJECT_DIR$/systems/core/controller/Controller.php" />
         <option value="$PROJECT_DIR$/systems/core/verify_data/Verify_Data.php" />
         <option value="$PROJECT_DIR$/systems/common/config.php" />
         <option value="$PROJECT_DIR$/systems/common/router.php" />
+        <option value="$PROJECT_DIR$/systems/core/config/Config.php" />
       </list>
     </option>
   </component>
@@ -373,24 +347,6 @@
               <item name="models" type="462c0819:PsiDirectoryNode" />
               <item name="entities" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="jbboehr" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="jbboehr" type="462c0819:PsiDirectoryNode" />
-              <item name="zsql" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -468,7 +424,7 @@
       <workItem from="1533883644823" duration="522000" />
       <workItem from="1533884290852" duration="367000" />
       <workItem from="1533887254163" duration="47206000" />
-      <workItem from="1534383194676" duration="1666000" />
+      <workItem from="1534383194676" duration="1815000" />
     </task>
     <servers />
   </component>
@@ -505,7 +461,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74490000" />
+    <option name="totallyTimeSpent" value="74639000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="826" extended-state="0" />
@@ -719,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systems/core/controller/Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -770,13 +719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1323">
@@ -811,6 +753,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/systems/common/router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/systems/core/View/RenderView.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="387">
@@ -818,10 +767,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systems/common/router.php">
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="29" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="567">
+          <caret line="63" column="77" selection-start-line="63" selection-start-column="77" selection-end-line="63" selection-end-column="77" />
         </state>
       </provider>
     </entry>
