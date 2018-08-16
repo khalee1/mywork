@@ -30,8 +30,7 @@ class Status
         $this->statusName = $statusName;
         $this->color = $color;
     }
-
-
+    
     public function getStatusId()
     {
         return $this->statusId;
