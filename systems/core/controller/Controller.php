@@ -24,22 +24,32 @@ class Controller
     }
 
 
+    /**
+     * Connection to Database
+     *
+     * @param array $configDB
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
     private function openConnectionToDatabase($configDB)
     {
-        $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ,PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
+        $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
 
         $this->db = new PDO($configDB['type'] .
-                            ':host=' . $configDB['host'] .
-                            ';dbname=' . $configDB['schema'] .
-                            ';charset=' . $configDB['charset'],
-                            $configDB['user'],
-                            $configDB['pass'],
-                            $options
+            ':host=' . $configDB['host'] .
+            ';dbname=' . $configDB['schema'] .
+            ';charset=' . $configDB['charset'],
+            $configDB['user'],
+            $configDB['pass'],
+            $options
         );
     }
 
     function __destruct()
     {
-       $this->view->show();
+        $this->view->show();
     }
 }

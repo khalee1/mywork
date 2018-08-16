@@ -24,6 +24,16 @@ class Router
         $this->loadRouter();
     }
 
+    /**
+     * Directional router , call the current controller corresponding to the url
+     *
+     * @param null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
     protected function loadRouter()
     {
         $this->class = ucfirst($this->uri->urlController) . "_Controller";

@@ -7,9 +7,9 @@ $router['default_action'] = 'index';
 $router['home'] = array('index' => 'index');
 
 $router['works'] = array('index' => 'index',
-                        'add'  => 'addWork',
-                        'load' => 'loadData',
-                        'update' => 'ajaxUpdate',
-                        'delete'  =>  'deleteWork',
-                        'edit' => 'editWork');
+    'add' => 'addWork',
+    'load' => 'loadData',
+    'update' => 'ajaxUpdate',
+    'delete' => 'deleteWork',
+    'edit' => 'editWork');
 return $router;

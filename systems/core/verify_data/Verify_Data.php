@@ -13,6 +13,8 @@ use Kd\Core\Verify\PostException as PostEx;
 class Verify_Data
 {
     /**
+     * Check number input is >0 and it is integer
+     *
      * @param int $number
      *
      * @return bool
@@ -26,14 +28,16 @@ class Verify_Data
         if (!filter_var($number, FILTER_VALIDATE_INT))
             throw  new \Exception("It must be number");
 
-        if ($number<=0)
+        if ($number <= 0)
             throw  new \Exception("Input must greater than 0");
 
         return true;
     }
 
     /**
-     * @param var $param \
+     * Check param input is not null
+     *
+     * @param var $param
      *
      * @return bool
      *
@@ -50,6 +54,8 @@ class Verify_Data
     }
 
     /**
+     * Check Input Date Start Less than Date End.
+     *
      * @param \DateTime $dayStart
      *
      * @param \DateTime $dayEnd
@@ -72,6 +78,8 @@ class Verify_Data
     }
 
     /**
+     * Check some params in $_POST not null
+     *
      * @param array $listKey
      *
      * @param post request $post

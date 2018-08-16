@@ -24,6 +24,17 @@ class URI
         }
     }
 
+    /**
+     * Split Url to Controller, Action , Param with url has a format( have ?):
+     * Ex: localhost:8080/controller/action?id=2
+     *
+     * @param string $url
+     *
+     * @return array : Contains controller , Action, Params
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
     public function getUrlHaveQuery($url)
     {
         $url = explode('?', $url);
@@ -41,6 +52,17 @@ class URI
         return $urlArray;
     }
 
+    /**
+     * Split Url to Controller, Action , Param without Query (Haven't ?):
+     * Ex: localhost:8080/controller/action/23
+     *
+     * @param string $url
+     *
+     * @return array : Contains controller , Action, Params
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
     public function getUrlHaveNoQuery($url)
     {
         $url = explode('/', $url);
@@ -63,6 +85,16 @@ class URI
         );
     }
 
+    /**
+     * Get Url by transfer user
+     *
+     * @param null
+     *
+     * @return array : Contains controller , Action, Params
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
     protected function getURI()
     {
         $url = trim($_SERVER['REQUEST_URI'], '/');

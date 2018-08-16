@@ -7,11 +7,11 @@
 $config['db'] = array(
     'type' => 'mysql',
     'host' => 'mysql',
-    'schema'=>'my_work',
+    'schema' => 'my_work',
     'user' => 'root',
-    'pass' => 'root' ,
-    'charset'=> 'utf8',
-    );
+    'pass' => 'root',
+    'charset' => 'utf8',
+);
 
 /**
  * return config array and In core/config/Config.php you can get array.
