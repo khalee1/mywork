@@ -3,18 +3,22 @@
 use Kd\Core\Controller\Controller as Controller;
 use Kd\Core\Verify\Verify_Data as Verify;
 use Kd\Models\Entities\Works as Works;
-use Kd\Models\DAO\Work_DAO as Work_DAO;
+use Kd\Models\BLL\Work_BLL as Work_BLL;
+use Kd\Models\BLL\Status_BLL as Status_BLL;
 use Kd\Core\Verify\PostException as PostEx;
 
 class Works_Controller extends Controller
 {
 
-    private $workModel = null;
+    private $workBllModel = null;
+
+    private $statusBllModel = null;
 
     public function __construct()
     {
         parent::__construct();
-        $this->workModel = new Work_DAO($this->db);
+        $this->workBllModel = new Work_BLL();
+        $this->statusBllModel = new Status_BLL();
     }
 
     /**
@@ -46,22 +50,7 @@ class Works_Controller extends Controller
      */
     public function loadData()
     {
-        $result = $this->workModel->getAllWork();
-
-        if (count($result) > 0) {
-            $data = array();
-            foreach ($result as $row) {
-                $data[] = array(
-                    'id' => $row->id,
-                    'title' => $row->work_name,
-                    'start' => $row->start_date,
-                    'end' => $row->end_date,
-                    'color' => $row->color
-                );
-            }
-
-            echo json_encode($data);
-        }
+        echo $this->workBllModel->getAllWork();
     }
 
     /**
@@ -82,9 +71,9 @@ class Works_Controller extends Controller
             Verify::checkPost($listKey, $_POST);
             Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
 
-            $work = new Works('', $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
+            $workObject = new Works('', $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
 
-            if (!$this->workModel->addWork($work))
+            if (!$this->workBllModel->addWork($workObject))
                 throw new \Exception("Add Work Fail");
 
             $this->view->to('works/index');
@@ -94,7 +83,7 @@ class Works_Controller extends Controller
             $data['message'] = $exception->getMessage();
         }
 
-        $data['listStatus'] = $this->workModel->getAllStatus();
+        $data['listStatus'] = $this->statusBllModel->getAllStatus();
         $this->view->renderView('Layouts/header');
         $this->view->renderView('works/add', $data);
         $this->view->renderView('Layouts/footer');
@@ -118,9 +107,9 @@ class Works_Controller extends Controller
             Verify::checkPost($listKey, $_POST);
             Verify::checkIsDateStartLessThanDateEnd($_POST['start'], $_POST['end']);
 
-            $work = new Works($_POST['id'], '', $_POST['start'], $_POST['end'], '');
+            $workObject = new Works($_POST['id'], '', $_POST['start'], $_POST['end'], '');
 
-            if (!$this->workModel->updateWorkByResize($work))
+            if (!$this->workBllModel->updateWorkByResize($workObject))
                 throw new Exception("Update Resize Fail");
 
             $this->view->to('works/index');
@@ -148,7 +137,7 @@ class Works_Controller extends Controller
             Verify::checkNotNull($workId);
             Verify::checkIsNumberGreaterThanZero($workId);
 
-            $work = $this->workModel->getWork($workId);
+            $work = $this->workBllModel->getWork($workId);
             Verify::checkNotNull($work);
 
             $data['work'] = $work;
@@ -162,9 +151,9 @@ class Works_Controller extends Controller
             Verify::checkPost($listKey, $_POST);
             Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
 
-            $workEdit = new Works($workId, $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
+            $workObject = new Works($workId, $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
 
-            if (!$this->workModel->updateWorkByEdit($workEdit))
+            if (!$this->workBllModel->updateWorkByEdit($workObject))
                 throw new \Exception("Add Work Fail");
 
             $this->view->to('works/index');
@@ -173,7 +162,7 @@ class Works_Controller extends Controller
             $data['message'] = $exception->getMessage();
         }
 
-        $data['listStatus'] = $this->workModel->getAllStatus();
+        $data['listStatus'] = $this->statusBllModel->getAllStatus();
         $this->view->renderView('Layouts/header');
         $this->view->renderView('works/edit', $data);
         $this->view->renderView('Layouts/footer');
@@ -193,9 +182,9 @@ class Works_Controller extends Controller
         try {
             Verify::checkNotNull($workId);
             Verify::checkIsNumberGreaterThanZero($workId);
-            Verify::checkNotNull($this->workModel->getWork($workId));
+            Verify::checkNotNull($this->workBllModel->getWork($workId));
 
-            $this->workModel->deleteWork($workId);
+            $this->workBllModel->deleteWork($workId);
 
             $this->view->to('works/index?msg=del');
         } catch (Exception $exception) {

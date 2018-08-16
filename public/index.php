@@ -31,8 +31,20 @@ require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify_data' . DIRECTORY
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'RenderView.php';
 //load entities
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'entities' . DIRECTORY_SEPARATOR . 'Works.php';
+//load entities
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'entities' . DIRECTORY_SEPARATOR . 'Status.php';
+//load DAO (working with DB)
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'ModelDAO.php';
 //load DAO (working with DB)
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Work_DAO.php';
+//load DAO (working with DB)
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Status_DAO.php';
+//load DAO (working with DB)
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Database.php';
+//load BLL
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . 'Work_BLL.php';
+//load BLL
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . 'Status_BLL.php';
 
 //Init App
 $app = new \Kd\Core\Router\Router();

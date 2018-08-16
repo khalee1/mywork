@@ -3,22 +3,14 @@
 namespace Kd\Models\DAO;
 
 use Kd\Models\Entities\Works;
+use  Kd\Models\DAO\ModelDAO as ModelDAO;
 
-class Work_DAO
+class Work_DAO extends ModelDAO
 {
-    /**
-     * @param object $db A PDO database connection
-     */
-    private $db = null;
-
-    function __construct($db)
-    {
-        try {
-            $this->db = $db;
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
-        }
-    }
+   function __construct()
+   {
+       parent::__construct();
+   }
 
     /**
      * Get all works from database
@@ -33,26 +25,6 @@ class Work_DAO
     {
         $sql = "SELECT w.id , w.work_name, w.start_date , w.end_date, w.id_status , s.status_name , s.color  FROM work AS w " .
             "JOIN status AS s ON w.id_status = s.id ORDER BY w.id DESC";
-
-        $query = $this->db->prepare($sql);
-
-        $query->execute();
-
-        return $query->fetchAll();
-    }
-
-    /**
-     * Get all status from database
-     *
-     * @param null
-     *
-     * @return list Status
-     *
-     * @author  khaln@tech.est-rouge.com
-     */
-    public function getAllStatus()
-    {
-        $sql = "SELECT s.id, s.status_name , s.color FROM status AS s ORDER BY s.id ASC";
 
         $query = $this->db->prepare($sql);
 

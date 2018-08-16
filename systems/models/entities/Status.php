@@ -18,6 +18,20 @@ class Status
 
     private $color;
 
+    /**
+     * Status constructor.
+     * @param $statusId
+     * @param $statusName
+     * @param $color
+     */
+    public function __construct($statusId, $statusName, $color)
+    {
+        $this->statusId = $statusId;
+        $this->statusName = $statusName;
+        $this->color = $color;
+    }
+
+
     public function getStatusId()
     {
         return $this->statusId;
