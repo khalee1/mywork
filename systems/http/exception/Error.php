@@ -1,10 +1,24 @@
 <?php
+
 namespace Kd\Http\Exception;
 
 use ErrorException;
+use Exception;
 
 class Error
 {
+
+    private static $instance;
+
+    public static function getInstance()
+    {
+        if (null === static::$instance) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
+    }
+
     /**
      * Error handler. Convert all errors to Exception by throwing an ErrorException
      *
@@ -18,6 +32,23 @@ class Error
     {
         if (error_reporting() != 0) {
             throw new ErrorException($message, 0, $level, $file, $line);
+        }
+    }
+
+    /**
+     * Exception Handler
+     *
+     * @param Exception $exception
+     *
+     */
+    public static function exceptionHandler($exception)
+    {
+        if ($exception instanceof Exception) {
+            $data['message'] = $exception->getMessage();
+            view()->renderFile(SYS_PATH . "core/exceptions/resources/views",
+                '500',
+                $data);
+            view()->show();
         }
     }
 }

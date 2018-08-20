@@ -90,6 +90,9 @@ class Work_BLL
     {
         $item = $this->workDAO->getWork($workId);
 
+        if(empty($item))
+            return null;
+
         return new Works($item->id, $item->work_name, $item->start_date, $item->end_date, $item->id_status);
     }
 

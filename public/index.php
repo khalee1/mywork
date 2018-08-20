@@ -13,6 +13,8 @@ define('BASE_PATH', ROOT . 'src' . DIRECTORY_SEPARATOR);
 //set a constant that holds the system file "systems" folder , like "/var/www/html/web/systems"
 define('SYS_PATH', ROOT . 'systems' . DIRECTORY_SEPARATOR);
 
+define('KD_ENVIRONMENT', (getenv('KD_ENVIRONMENT') ==! null) ? getenv('KD_ENVIRONMENT') : 'development');
+
 //load file init
 require_once SYS_PATH . 'common' . DIRECTORY_SEPARATOR . 'kd_init.php';
 //load Router
@@ -24,9 +26,9 @@ require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_
 //load Config
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Config.php';
 //load verify
-require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify_data' . DIRECTORY_SEPARATOR . 'Verify_Data.php';
+require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify' . DIRECTORY_SEPARATOR . 'Verify_Data.php';
 //load verify exception
-require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify_data' . DIRECTORY_SEPARATOR . 'PostException.php';
+require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify' . DIRECTORY_SEPARATOR . 'PostException.php';
 //load view
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'RenderView.php';
 //load entities
@@ -45,6 +47,12 @@ require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPAR
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . 'Work_BLL.php';
 //load BLL
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . 'Status_BLL.php';
+//load helper
+require_once SYS_PATH . 'libraries' . DIRECTORY_SEPARATOR . 'helpers.php';
+//load Error
+require_once SYS_PATH . 'http' . DIRECTORY_SEPARATOR . 'exception' . DIRECTORY_SEPARATOR . 'Error.php';
+
+set_exception_handler(array("\Kd\Http\Exception\Error", "exceptionHandler"));
 
 //Init App
-$app = new \Kd\Core\Router\Router();
+$app = app();

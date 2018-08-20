@@ -9,6 +9,8 @@
 namespace Kd\Core\Verify;
 
 use Kd\Core\Verify\PostException as PostEx;
+use Exception;
+use DateTime;
 
 class Verify_Data
 {
@@ -26,10 +28,10 @@ class Verify_Data
     static function checkIsNumberGreaterThanZero($number)
     {
         if (!filter_var($number, FILTER_VALIDATE_INT))
-            throw  new \Exception("It must be number");
+            throw  new Exception("It must be number");
 
         if ($number <= 0)
-            throw  new \Exception("Input must greater than 0");
+            throw  new Exception("Input must greater than 0");
 
         return true;
     }
@@ -48,7 +50,7 @@ class Verify_Data
     static function checkNotNull($param)
     {
         if (empty($param))
-            throw  new \Exception("Not found Data");
+            throw  new Exception("Not found Data");
 
         return true;
     }
@@ -68,11 +70,11 @@ class Verify_Data
      */
     static function checkIsDateStartLessThanDateEnd($dayStart, $dayEnd)
     {
-        $dayStart = new \DateTime($dayStart);
-        $dayEnd = new \DateTime($dayEnd);
+        $dayStart = new DateTime($dayStart);
+        $dayEnd = new DateTime($dayEnd);
 
         if ($dayStart > $dayEnd)
-            throw  new \Exception("Date Start less than date end");
+            throw  new Exception("Date Start less than date end");
 
         return true;
     }

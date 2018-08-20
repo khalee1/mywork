@@ -10,6 +10,9 @@ namespace Kd\Models\DAO;
 
 class ModelDAO
 {
+    /**
+     * @var PDO
+     */
     protected $db = null;
 
     function __construct()

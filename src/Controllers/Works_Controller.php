@@ -133,17 +133,14 @@ class Works_Controller extends Controller
     {
         $work = null;
         $data = [];
-        try {
-            Verify::checkNotNull($workId);
-            Verify::checkIsNumberGreaterThanZero($workId);
 
-            $work = $this->workBllModel->getWork($workId);
-            Verify::checkNotNull($work);
+        Verify::checkNotNull($workId);
+        Verify::checkIsNumberGreaterThanZero($workId);
 
-            $data['work'] = $work;
-        } catch (Exception $exception) {
-            $this->view->to('works/index');
-        }
+        $work = $this->workBllModel->getWork($workId);
+        Verify::checkNotNull($work);
+
+        $data['work'] = $work;
 
         try {
             $listKey = array('submit_edit_work', 'work_name', 'start_date', 'end_date', 'id_status');
@@ -175,22 +172,19 @@ class Works_Controller extends Controller
      *
      * @return void
      *
+     * @throws Exception
+     *
      * @author khaln@tech.est-rouge.com
      */
     public function deleteWork($workId)
     {
-        try {
-            Verify::checkNotNull($workId);
-            Verify::checkIsNumberGreaterThanZero($workId);
-            Verify::checkNotNull($this->workBllModel->getWork($workId));
+        Verify::checkNotNull($workId);
+        Verify::checkIsNumberGreaterThanZero($workId);
+        Verify::checkNotNull($this->workBllModel->getWork($workId));
 
-            $this->workBllModel->deleteWork($workId);
+        if (!$this->workBllModel->deleteWork($workId))
+            throw new Exception("Delete Fail");
 
-            $this->view->to('works/index?msg=del');
-        } catch (Exception $exception) {
-            $this->view->to('works/index?msg=err');
-        }
-
-
+        $this->view->to('works/index?msg=del');
     }
 }

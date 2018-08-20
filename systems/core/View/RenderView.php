@@ -7,6 +7,16 @@ class RenderView
 {
     protected $__content = array();
 
+    private static $instance;
+
+    public static function getInstance()
+    {
+        if (null === static::$instance) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
+    }
 
     /**
      * Render input view and convert it to array and save to $__content
@@ -21,10 +31,27 @@ class RenderView
      */
     public function renderView($view, $data = array())
     {
+        $this->renderFile(BASE_PATH . 'Views' ,  $view , $data);
+    }
+
+    /**
+     * Render file
+     *
+     * @param string $filePath
+     *
+     * @param string $view
+     *
+     * @param array $data
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     */
+    public function renderFile($filePath,$view, $data = array()){
         extract($data);
         ob_start();
 
-        require_once BASE_PATH . 'Views/' . $view . '.php';
+        require_once $filePath . DIRECTORY_SEPARATOR . $view .'.php';
 
         $content = ob_get_contents();
         ob_end_clean();

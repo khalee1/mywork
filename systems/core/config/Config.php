@@ -30,21 +30,24 @@ class Config
      */
     public function load($configName)
     {
-        if (!file_exists(SYS_PATH . '/common/' . $configName . '.php')) {
-            return FALSE;
+        $fileList = array(
+            SYS_PATH . 'common/' . $configName . '.php',
+            SYS_PATH . 'common/' . KD_ENVIRONMENT . DIRECTORY_SEPARATOR . $configName . '.php'
+        );
+
+        foreach ($fileList as $file){
+            if (file_exists($file)) {
+                $configArray = require_once $file;
+            }
+
+            if (empty($configArray) || !is_array($configArray)) {
+                continue;
+            }
+
+            foreach ($configArray as $key => $item) {
+                $this->config[$key] = $item;
+            }
         }
-
-        $configArray = require_once SYS_PATH . '/common/' . $configName . '.php';
-
-        if (empty($configArray) || !is_array($configArray)) {
-            return FALSE;
-        }
-
-        foreach ($configArray as $key => $item) {
-            $this->config[$key] = $item;
-        }
-
-        return true;
     }
 
     /**

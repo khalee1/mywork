@@ -2,8 +2,10 @@
 
 namespace Kd\Core\Router;
 
+use Kd\Core\Controller\Controller;
 use KD\Core\URI\URI as URI;
 use Kd\Core\Config\Config as Config;
+use Exception;
 
 class Router
 {
@@ -15,6 +17,18 @@ class Router
     public $class = '';
 
     public $method = 'index';
+
+    private static $instance;
+
+    public static function getInstance()
+    {
+        if (null === static::$instance) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
+    }
+
 
     public function __construct()
     {
@@ -31,6 +45,8 @@ class Router
      *
      * @return void
      *
+     * @throws \Exception
+     *
      * @author khaln@tech.est-rouge.com
      *
      */
@@ -39,38 +55,38 @@ class Router
         $this->class = ucfirst($this->uri->urlController) . "_Controller";
 
         if (!file_exists(BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php')) {
-            die('No Controller');
+            throw new Exception('No Controller');
         }
 
         require_once BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php';
 
         if (!class_exists($this->class)) {
-            die ('No found  controller');
+            throw new Exception('No found  controller');
         }
 
         $tmpRouterItem = self::$config->item($this->uri->urlController);
 
         if (empty($tmpRouterItem)) {
-            die('Not found config controller in router');
+            throw new Exception('Not found config controller in router');
         }
 
         if (!isset($tmpRouterItem[$this->uri->urlAction])) {
-            die('Not found method in router');
+            throw new Exception('Not found method in router');
         }
 
         $this->method = $tmpRouterItem[$this->uri->urlAction];
 
-        $controllerObject = new $this->class();
+        $currentController = new $this->class();
 
-        if (!method_exists($controllerObject, $this->method)) {
-            die ('No action');
+        if (!method_exists($currentController, $this->method)) {
+            throw new Exception('No action');
         }
 
         if (empty($this->uri->urlParams)) {
-            $controllerObject->{$this->method}();
+            $currentController->{$this->method}();
             return;
         }
 
-        call_user_func_array(array($controllerObject, $this->method), $this->uri->urlParams);
+        call_user_func_array(array($currentController, $this->method), $this->uri->urlParams);
     }
 }

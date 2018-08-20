@@ -7,10 +7,10 @@ use  Kd\Models\DAO\ModelDAO as ModelDAO;
 
 class Work_DAO extends ModelDAO
 {
-   function __construct()
-   {
-       parent::__construct();
-   }
+    function __construct()
+    {
+        parent::__construct();
+    }
 
     /**
      * Get all works from database
@@ -75,7 +75,9 @@ class Work_DAO extends ModelDAO
 
         $parameters = array(':id' => $workId);
 
-        return $query->execute($parameters);
+        $query->execute($parameters);
+
+        return ($query->rowCount() > 0);
     }
 
     /**
