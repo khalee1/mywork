@@ -88,13 +88,13 @@ class VerifyDataTest extends TestCase
         Verify_Data::checkIsDateStartLessThanDateEnd($dayStart, $dayEnd);
     }
 
-    public function testCheckPostReturnTrue()
+    public function testCheckPostHaveKeyReturnTrue()
     {
         $dataListKey = array('id_work', 'work_name');
         $dataPost = array('id_work' => 2,
             'work_name' => 'abc');
 
-        $result = Verify_Data::checkPost($dataListKey, $dataPost);
+        $result = Verify_Data::checkPostHaveKey($dataListKey, $dataPost);
         $this->assertTrue($result);
     }
 
@@ -102,12 +102,12 @@ class VerifyDataTest extends TestCase
      * @throws \Kd\Core\Verify\PostException
      * @expectedException \Kd\Core\Verify\PostException
      */
-    public function testCheckPostThrowExceptionPOSTHaveNotKey()
+    public function testCheckPostHaveKeyThrowExceptionPOSTHaveNotKey()
     {
         $dataListKey = array('id_work', 'work');
         $dataPost = array('id_work' => 2,
             'work_name' => 'abc');
 
-        Verify_Data::checkPost($dataListKey, $dataPost);
+        Verify_Data::checkPostHaveKey($dataListKey, $dataPost);
     }
 }

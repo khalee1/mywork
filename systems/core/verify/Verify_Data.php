@@ -92,7 +92,7 @@ class Verify_Data
      *
      * @author khaln@tech.est-rouge.com
      */
-    static function checkPost($listKey, $post)
+    static function checkPostHaveKey($listKey, $post)
     {
         foreach ($listKey as $key) {
             if (empty($post[$key])) throw new PostEx("$key not null");
