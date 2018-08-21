@@ -55,7 +55,9 @@ class Work_DAO extends ModelDAO
             ':id_status' => $work->getStatus()
         );
 
-        return $query->execute($parameters);
+        $query->execute($parameters);
+
+        return $this->db->lastInsertId();
     }
 
     /**

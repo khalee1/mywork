@@ -54,5 +54,5 @@ require_once SYS_PATH . 'http' . DIRECTORY_SEPARATOR . 'exception' . DIRECTORY_S
 
 set_exception_handler(array("\Kd\Http\Exception\Error", "exceptionHandler"));
 
-//Init App
+if (KD_ENVIRONMENT ==! 'test')
 $app = app();

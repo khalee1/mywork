@@ -7,9 +7,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1c085240-74b9-4412-9ed2-b5910ec19fd7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controllers/Works_Controller.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Works_Controller.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/systems/core/verify/Verify_Data.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/verify/Verify_Data.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/VerifyDataTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/VerifyDataTest.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/Generic_Tests_DatabaseTestCase.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mywork.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mywork.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/build/mysql/data/my_work/work.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/build/mysql/data/my_work/work.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_index_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_index_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_table_stats.ibd" beforeDir="false" afterPath="$PROJECT_DIR$/docker/build/mysql/data/mysql/innodb_table_stats.ibd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/phpunit.xml" beforeDir="false" afterPath="$PROJECT_DIR$/phpunit.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/systems/core/config/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/core/config/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/systems/models/BLL/Work_BLL.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/models/BLL/Work_BLL.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/systems/models/DAO/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/models/DAO/Database.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/systems/models/DAO/ModelDAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/models/DAO/ModelDAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/systems/models/DAO/Work_DAO.php" beforeDir="false" afterPath="$PROJECT_DIR$/systems/models/DAO/Work_DAO.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/DatabaseTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/DatabaseTest.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,18 +52,18 @@
     <session id="670389932">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="13" />
+          <entry key="project.closed" value="14" />
           <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.16" value="1" />
-          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.2" value="2" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -58,25 +72,25 @@
           <entry key="htaccess" value="5" />
           <entry key="html" value="2" />
           <entry key="ini" value="2" />
-          <entry key="json" value="6" />
+          <entry key="json" value="8" />
           <entry key="md" value="1" />
-          <entry key="php" value="495" />
+          <entry key="php" value="518" />
           <entry key="sql" value="1" />
-          <entry key="xml" value="3" />
-          <entry key="yml" value="1" />
+          <entry key="xml" value="4" />
+          <entry key="yml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="2" />
           <entry key="Ini" value="2" />
-          <entry key="JSON" value="6" />
+          <entry key="JSON" value="8" />
           <entry key="Markdown" value="1" />
-          <entry key="PHP" value="495" />
+          <entry key="PHP" value="518" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SQL" value="1" />
-          <entry key="XML" value="3" />
-          <entry key="YAML" value="1" />
+          <entry key="XML" value="4" />
+          <entry key="YAML" value="2" />
           <entry key="htaccess" value="5" />
         </counts>
       </usages-collector>
@@ -85,21 +99,23 @@
           <entry key="gitignore" value="2" />
           <entry key="htaccess" value="1" />
           <entry key="html" value="23" />
-          <entry key="json" value="65" />
-          <entry key="php" value="15597" />
+          <entry key="json" value="83" />
+          <entry key="php" value="17788" />
           <entry key="sql" value="6" />
           <entry key="txt" value="67" />
-          <entry key="xml" value="64" />
+          <entry key="xml" value="66" />
+          <entry key="yml" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="23" />
-          <entry key="JSON" value="65" />
-          <entry key="PHP" value="15509" />
+          <entry key="JSON" value="83" />
+          <entry key="PHP" value="17700" />
           <entry key="PLAIN_TEXT" value="69" />
           <entry key="SQL" value="94" />
-          <entry key="XML" value="64" />
+          <entry key="XML" value="66" />
+          <entry key="YAML" value="67" />
           <entry key="htaccess" value="1" />
         </counts>
       </usages-collector>
@@ -108,7 +124,7 @@
       <usages-collector id="statistics.php.rename.constructor" />
       <usages-collector id="statistics.php.new.class">
         <counts>
-          <entry key="PHP Class.type" value="17" />
+          <entry key="PHP Class.type" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.php.new.test" />
@@ -116,7 +132,119 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/systems/models/DAO/Database.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="93">
+              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="e#120#146#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/DatabaseTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
+              <folding>
+                <element signature="e#94#121#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="288">
+              <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+              <folding>
+                <element signature="e#7#55#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+              <folding>
+                <element signature="e#6#91#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/Generic_Tests_DatabaseTestCase.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
+              <folding>
+                <element signature="e#7#38#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/systems/models/DAO/Status_DAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="6" column="3" lean-forward="true" selection-start-column="5" selection-end-line="6" selection-end-column="3" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/systems/models/DAO/Work_DAO.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="161">
+              <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+              <folding>
+                <element signature="e#33#62#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/systems/models/BLL/Work_BLL.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-14">
+              <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/VerifyDataTest.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="648">
+              <caret line="110" column="37" selection-start-line="110" selection-start-column="21" selection-end-line="110" selection-end-column="37" />
+              <folding>
+                <element signature="e#7#39#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -127,6 +255,7 @@
       <find>c</find>
       <find>checkPost</find>
       <find>checkPostHaveKey</find>
+      <find>echo</find>
     </findStrings>
     <replaceStrings>
       <replace>$urlArray</replace>
@@ -165,26 +294,28 @@
         <option value="$PROJECT_DIR$/systems/models/DAO/Status_DAO.php" />
         <option value="$PROJECT_DIR$/systems/core/controller/Controller.php" />
         <option value="$PROJECT_DIR$/systems/models/entities/Status.php" />
-        <option value="$PROJECT_DIR$/systems/models/DAO/ModelDAO.php" />
-        <option value="$PROJECT_DIR$/systems/models/DAO/Work_DAO.php" />
         <option value="$PROJECT_DIR$/systems/core/exceptions/resources/views/layout.html" />
         <option value="$PROJECT_DIR$/systems/core/router/Router.php" />
         <option value="$PROJECT_DIR$/systems/libraries/helpers.php" />
         <option value="$PROJECT_DIR$/systems/core/View/RenderView.php" />
         <option value="$PROJECT_DIR$/systems/core/exceptions/resources/views/500.php" />
-        <option value="$PROJECT_DIR$/systems/models/BLL/Work_BLL.php" />
-        <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/test/ExampleTest.php" />
         <option value="$PROJECT_DIR$/systems/http/exception/Error.php" />
-        <option value="$PROJECT_DIR$/systems/core/config/Config.php" />
-        <option value="$PROJECT_DIR$/phpunit.xml" />
-        <option value="$PROJECT_DIR$/systems/common/test/config.php" />
-        <option value="$PROJECT_DIR$/public/index.php" />
-        <option value="$PROJECT_DIR$/test/DatabaseTest.php" />
-        <option value="$PROJECT_DIR$/systems/models/DAO/Database.php" />
         <option value="$PROJECT_DIR$/systems/core/verify/Verify_Data.php" />
         <option value="$PROJECT_DIR$/test/VerifyDataTest.php" />
         <option value="$PROJECT_DIR$/src/Controllers/Works_Controller.php" />
+        <option value="$PROJECT_DIR$/phpunit.xml" />
+        <option value="$PROJECT_DIR$/composer.json" />
+        <option value="$PROJECT_DIR$/systems/common/test/config.php" />
+        <option value="$PROJECT_DIR$/systems/core/config/Config.php" />
+        <option value="$PROJECT_DIR$/systems/models/DAO/Database.php" />
+        <option value="$PROJECT_DIR$/docker/docker-compose.yml" />
+        <option value="$PROJECT_DIR$/systems/models/DAO/Work_DAO.php" />
+        <option value="$PROJECT_DIR$/systems/models/DAO/ModelDAO.php" />
+        <option value="$PROJECT_DIR$/systems/models/BLL/Work_BLL.php" />
+        <option value="$PROJECT_DIR$/public/index.php" />
+        <option value="$PROJECT_DIR$/test/Generic_Tests_DatabaseTestCase.php" />
+        <option value="$PROJECT_DIR$/test/DatabaseTest.php" />
       </list>
     </option>
   </component>
@@ -207,9 +338,12 @@
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/myclabs/deep-copy" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/manifest" />
+      <path value="$PROJECT_DIR$/vendor/phar-io/version" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-timer" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/dbunit" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-text-template" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-token-stream" />
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit-mock-objects" />
@@ -217,6 +351,7 @@
       <path value="$PROJECT_DIR$/vendor/phpunit/phpunit" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-ctype" />
       <path value="$PROJECT_DIR$/vendor/symfony/yaml" />
+      <path value="$PROJECT_DIR$/vendor/theseer/tokenizer" />
       <path value="$PROJECT_DIR$/vendor/doctrine/instantiator" />
       <path value="$PROJECT_DIR$/vendor/sebastian/global-state" />
       <path value="$PROJECT_DIR$/vendor/sebastian/comparator" />
@@ -224,6 +359,7 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/object-reflector" />
       <path value="$PROJECT_DIR$/vendor/sebastian/resource-operations" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit-reverse-lookup" />
       <path value="$PROJECT_DIR$/vendor/sebastian/diff" />
@@ -232,7 +368,6 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
-      <path value="$PROJECT_DIR$/vendor/jbboehr/zsql" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
@@ -255,6 +390,11 @@
             <path>
               <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
               <item name="mywork" type="462c0819:PsiDirectoryNode" />
+              <item name="docker" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mywork" type="462c0819:PsiDirectoryNode" />
               <item name="public" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -271,74 +411,13 @@
             <path>
               <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
               <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
               <item name="systems" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="development" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
               <item name="mywork" type="462c0819:PsiDirectoryNode" />
               <item name="systems" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="exceptions" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="uri" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="verify" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mywork" type="462c0819:PsiDirectoryNode" />
-              <item name="systems" type="462c0819:PsiDirectoryNode" />
-              <item name="core" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mywork" type="b2602c69:ProjectViewProjectNode" />
@@ -455,14 +534,12 @@
       <workItem from="1534470565412" duration="20003000" />
       <workItem from="1534647926603" duration="3059000" />
       <workItem from="1534730450300" duration="18000" />
-      <workItem from="1534745528131" duration="4101000" />
+      <workItem from="1534745528131" duration="10921000" />
+      <workItem from="1534814380979" duration="8534000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Test_Case - 2018.08.09 at 16h 54m 32s.xml">
-      <configuration name="Test_Case" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="Test_Case - 2018.08.09 at 16h 55m 51s.xml">
       <configuration name="Test_Case" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
@@ -490,14 +567,18 @@
     <history-entry file="VerifyDataTest_testCheckNotNullThrowExceptionParamNull - 2018.08.19 at 11h 11m 39s.xml">
       <configuration name="VerifyDataTest.testCheckNotNullThrowExceptionParamNull" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="VerifyDataTest_testCheckNotNullThrowExceptionParamNull - 2018.08.21 at 09h 10m 35s.xml">
+      <configuration name="VerifyDataTest.testCheckNotNullThrowExceptionParamNull" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117711000" />
+    <option name="totallyTimeSpent" value="133065000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9219089" visible="true" weight="0.29971388" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.9219089" visible="true" weight="0.3040057" />
       <window_info id="Structure" order="1" sideWeight="0.07809111" side_tool="true" weight="0.27968526" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -578,7 +659,7 @@
       <breakpoints>
         <line-breakpoint type="php">
           <url>file://$PROJECT_DIR$/systems/models/DAO/Work_DAO.php</url>
-          <line>71</line>
+          <line>73</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint type="php">
@@ -602,10 +683,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/autoload.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/BLL/Works_BLL.php" />
     <entry file="file://$PROJECT_DIR$/src/Views/Layouts/footer.php">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -635,16 +712,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/ModelsDAO.php" />
-    <entry file="file://$PROJECT_DIR$/vendor/jbboehr/zsql/src/Connection/MysqliFactory.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="26" lean-forward="true" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/jbboehr/zsql/src/Connection/MysqliFactoryInterface.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/jbboehr/zsql/src/Connection/MysqliFactory.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/jbboehr/zsql/src/Connection/MysqliFactoryInterface.php" />
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/GetConnectionAdapter.php" />
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/DatabaseAdapter.php" />
     <entry file="file://$PROJECT_DIR$/src/Views/works/add.php">
@@ -658,13 +727,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="66" column="92" selection-start-line="66" selection-start-column="92" selection-end-line="66" selection-end-column="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
@@ -719,22 +781,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/src/ForwardCompatibility/TestCase.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="14" column="15" selection-start-line="14" selection-start-column="15" selection-end-line="14" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/phpunit/phpunit/src/ForwardCompatibility/TestCase.php" />
     <entry file="file://$PROJECT_DIR$/docker/build/php.ini">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/DAO/Status_DAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/systems/libraries/helpers.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -757,31 +806,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/DAO/ModelDAO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/common/router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="5" lean-forward="true" selection-start-column="5" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systems/core/uri/URI.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="46" column="35" lean-forward="true" selection-start-line="46" selection-start-column="35" selection-end-line="46" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/BLL/Work_BLL.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-110">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
@@ -799,24 +827,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11">
-          <caret line="29" column="7" lean-forward="true" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/standard/standard_3.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
           <caret line="792" column="21" selection-start-line="792" selection-start-column="21" selection-end-line="792" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/common/test/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -834,41 +848,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="1138" column="24" selection-start-line="1138" selection-start-column="19" selection-end-line="1138" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/systems/core/verify/PostException.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/systems/models/DAO/Database.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="37" column="67" selection-start-line="37" selection-start-column="67" selection-end-line="37" selection-end-column="67" />
-          <folding>
-            <element signature="e#120#146#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/DatabaseTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="83" />
         </state>
       </provider>
     </entry>
@@ -882,36 +865,51 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="303">
-          <caret line="184" column="29" selection-start-line="184" selection-start-column="29" selection-end-line="184" selection-end-column="29" />
-          <folding>
-            <element signature="e#7#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/phpunit.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        <state relative-caret-position="195">
+          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/index.php">
+    <entry file="file://$PROJECT_DIR$/systems/core/config/Config.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="185">
-          <caret line="30" column="96" selection-start-line="30" selection-start-column="89" selection-end-line="30" selection-end-column="102" />
-          <folding>
-            <element signature="e#6#91#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="585">
+          <caret line="39" column="39" selection-start-line="39" selection-start-column="39" selection-end-line="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/common/router.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="5" selection-start-column="5" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/common/test/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="24" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/composer.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docker/docker-compose.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="27" column="16" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="16" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/VerifyDataTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
+        <state relative-caret-position="648">
           <caret line="110" column="37" selection-start-line="110" selection-start-column="21" selection-end-line="110" selection-end-column="37" />
           <folding>
             <element signature="e#7#39#0#PHP" expanded="true" />
@@ -919,12 +917,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/systems/models/DAO/ModelDAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/models/DAO/Database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+          <folding>
+            <element signature="e#120#146#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/PDO/PDO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="980" column="20" selection-start-line="980" selection-start-column="20" selection-end-line="980" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/models/BLL/Work_BLL.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="50" lean-forward="true" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/systems/models/DAO/Status_DAO.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="6" column="3" lean-forward="true" selection-start-column="5" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/systems/models/DAO/Work_DAO.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1257">
-          <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+        <state relative-caret-position="161">
+          <caret line="69" column="25" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
           <folding>
             <element signature="e#33#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Home_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="57" column="13" lean-forward="true" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+          <folding>
+            <element signature="e#6#91#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Works_Controller.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
+          <folding>
+            <element signature="e#7#55#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/Generic_Tests_DatabaseTestCase.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="89" column="11" selection-start-line="89" selection-start-column="11" selection-end-line="89" selection-end-column="11" />
+          <folding>
+            <element signature="e#7#38#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/DatabaseTest.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="90" column="4" selection-start-line="90" selection-start-column="4" selection-end-line="90" selection-end-column="4" />
+          <folding>
+            <element signature="e#94#121#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>

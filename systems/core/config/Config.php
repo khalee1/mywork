@@ -37,7 +37,7 @@ class Config
 
         foreach ($fileList as $file){
             if (file_exists($file)) {
-                $configArray = require_once $file;
+                $configArray = include $file;
             }
 
             if (empty($configArray) || !is_array($configArray)) {

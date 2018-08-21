@@ -60,7 +60,7 @@ class Work_BLL
      */
     public function addWork($workObject)
     {
-        return $this->workDAO->addWork($workObject);
+        return ($this->workDAO->addWork($workObject)>0);
     }
 
     /**

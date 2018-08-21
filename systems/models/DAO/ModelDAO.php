@@ -7,6 +7,7 @@
  */
 
 namespace Kd\Models\DAO;
+use PDO;
 
 class ModelDAO
 {
