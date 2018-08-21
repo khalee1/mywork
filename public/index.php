@@ -13,7 +13,7 @@ define('BASE_PATH', ROOT . 'src' . DIRECTORY_SEPARATOR);
 //set a constant that holds the system file "systems" folder , like "/var/www/html/web/systems"
 define('SYS_PATH', ROOT . 'systems' . DIRECTORY_SEPARATOR);
 
-define('KD_ENVIRONMENT', (getenv('KD_ENVIRONMENT') !== null) ? getenv('KD_ENVIRONMENT') : 'development');
+define('KD_ENVIRONMENT', (getenv('KD_ENVIRONMENT') != null) ? getenv('KD_ENVIRONMENT') : 'development');
 
 //load file init
 require_once SYS_PATH . 'common' . DIRECTORY_SEPARATOR . 'kd_init.php';
