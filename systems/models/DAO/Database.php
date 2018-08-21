@@ -63,7 +63,7 @@ class Database
     }
 
     /**
-     * @return null
+     * @return PDO
      */
     public function getDb()
     {
@@ -71,10 +71,14 @@ class Database
     }
 
     /**
-     * @param null $db
+     * @param PDO $db
      */
     public function setDb($db)
     {
         $this->db = $db;
+    }
+
+    public function addWorkShouldSaveDatabaseFailWhenDataINValid()
+    {
     }
 }

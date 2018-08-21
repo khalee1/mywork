@@ -80,11 +80,10 @@ class ValidateDataForm
     }
 
     /**
-     * Check some params in $_POST not null
      *
      * @param array $listKey
      *
-     * @param post request $post
+     * @param array $data
      *
      * @return bool
      *
@@ -92,10 +91,10 @@ class ValidateDataForm
      *
      * @author khaln@tech.est-rouge.com
      */
-    static function checkPostHaveKey($listKey, $post)
+    static function checkArrayKeyNotEmpty($listKey, $data)
     {
         foreach ($listKey as $key) {
-            if (empty($post[$key])) throw new PostEx("$key not null");
+            if (empty($data[$key])) throw new PostEx("$key not null");
         }
         return true;
     }

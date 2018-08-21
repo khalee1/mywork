@@ -6,7 +6,7 @@ use Kd\Core\Verify\ValidateDataForm;
 class ValidateDataFormTest extends TestCase
 {
 
-    public function testCheckNotNullReturnTrue()
+    public function testCheckNotNullShouldReturnTrueWhenDataNotEmpty()
     {
         $data = "Param Not Null";
 
@@ -19,14 +19,14 @@ class ValidateDataFormTest extends TestCase
      * @throws Exception
      * @expectedException Exception
      */
-    public function testCheckNotNullThrowExceptionParamNull()
+    public function testCheckNotNullShouldThrowExceptionWhenDataNull()
     {
         $data = null;
 
         ValidateDataForm::checkNotNull($data);
     }
 
-    public function testCheckIsNumberGreaterThanZeroReturnTrue()
+    public function testCheckIsNumberGreaterThanZeroShouldReturnTrueWhenDataGreaterThanZero()
     {
         $data = 12;
 
@@ -39,7 +39,7 @@ class ValidateDataFormTest extends TestCase
      * @throws Exception
      * @expectedException Exception
      */
-    public function testCheckIsNumberGreaterThanZeroThrowExceptionNumberLessThanZero()
+    public function testCheckIsNumberGreaterThanZeroShouldThrowExceptionWhenDataLessThanZero()
     {
         $data = '0';
 
@@ -53,15 +53,15 @@ class ValidateDataFormTest extends TestCase
      *
      * @expectedException Exception
      *
-     * @dataProvider dataForTestCheckIsNumberGreaterThanZeroThrowExceptionInputNotTypeInt
+     * @dataProvider dataNotTypeIntProvider
      */
-    public function testCheckIsNumberGreaterThanZeroThrowExceptionInputNotTypeInt($data)
+    public function testCheckIsNumberGreaterThanZeroShouldThrowExceptionWhenDataNotTypeInt($data)
     {
         ValidateDataForm::checkIsNumberGreaterThanZero($data);
     }
 
 
-    public function dataForTestCheckIsNumberGreaterThanZeroThrowExceptionInputNotTypeInt()
+    public function dataNotTypeIntProvider()
     {
         return [[12.12],
                 ['23.12'],
@@ -69,7 +69,7 @@ class ValidateDataFormTest extends TestCase
                 ];
     }
 
-    public function testCheckIsDateStartLessThanDateEndReturnTrue()
+    public function testCheckIsDateStartLessThanDateEndShouldReturnTrueWhenDateStartLessThanDateEnd()
     {
         $dayStart = '2018-08-14 01:40:00';
         $dayEnd = '2018-08-19 01:40:00';
@@ -81,14 +81,14 @@ class ValidateDataFormTest extends TestCase
      * @throws Exception
      * @expectedException Exception
      */
-    public function testCheckIsDateStartLessThanDateEndThrowExceptionDateStartGreaterThanDateEnd()
+    public function testCheckIsDateStartLessThanDateEndShouldThrowExceptionWhenDateStartGreaterThanDateEnd()
     {
         $dayStart = '2018-08-20 01:40:00';
         $dayEnd = '2018-08-19 01:40:00';
         ValidateDataForm::checkIsDateStartLessThanDateEnd($dayStart, $dayEnd);
     }
 
-    public function testCheckPostHaveKeyReturnTrue()
+    public function testCheckArrayKeyNotEmptyShouldReturnTrueWhenArrayKeyNotEmpty()
     {
         $dataListKey = array('id_work', 'work_name');
         $dataPost = array(
@@ -96,7 +96,7 @@ class ValidateDataFormTest extends TestCase
             'work_name' => 'abc'
         );
 
-        $result = ValidateDataForm::checkPostHaveKey($dataListKey, $dataPost);
+        $result = ValidateDataForm::checkArrayKeyNotEmpty($dataListKey, $dataPost);
         $this->assertTrue($result);
     }
 
@@ -104,7 +104,7 @@ class ValidateDataFormTest extends TestCase
      * @throws \Kd\Core\Verify\PostException
      * @expectedException \Kd\Core\Verify\PostException
      */
-    public function testCheckPostHaveKeyThrowExceptionPOSTHaveNotKey()
+    public function testCheckArrayKeyNotEmptyShouldThrowExceptionWhenArrayKeyEmpty()
     {
         $dataListKey = array('id_work', 'work');
         $dataPost = array(
@@ -112,6 +112,6 @@ class ValidateDataFormTest extends TestCase
             'work_name' => 'abc'
         );
 
-        ValidateDataForm::checkPostHaveKey($dataListKey, $dataPost);
+        ValidateDataForm::checkArrayKeyNotEmpty($dataListKey, $dataPost);
     }
 }

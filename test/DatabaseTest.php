@@ -25,7 +25,7 @@ class DatabaseTest extends Generic_Tests_DatabaseTestCase
         $this->dao = new Work_DAO();
     }
 
-    public function testAddWorkSuccess()
+    public function testAddWorkShouldSaveDatabaseSuccessWhenDataValid()
     {
         $work = new Works('', 'Test add', '2018-08-14 01:40:00', '2018-08-19 01:40:00', 2);
 
@@ -42,17 +42,37 @@ class DatabaseTest extends Generic_Tests_DatabaseTestCase
     }
 
     /**
+     * @param Works $workData
      * @throws Exception
      * @expectedException  PDOException
+     * @dataProvider dataWorkINValidProvider
      */
-    public function testAddWorkFail()
+    public function testAddWorkShouldSaveDatabaseFailWhenDataINValid($workData)
     {
-        $work = new Works('', 'kha_lee_12', '2018-08-14 01:40:00', '', 2);
+        $work = $workData;
 
         $this->dao->addWork($work);
     }
 
-    public function testDeleteWorkSuccess()
+    public function dataWorkINValidProvider()
+    {
+        return [
+            'End date is empty' => [
+                new Works('', 'kha_lee_12', '2018-08-14 01:40:00', '', 2)
+            ],
+            'Start date is empty' => [
+                new Works('', 'kha_lee_12', '', '2018-08-14 01:40:00', 2)
+            ],
+            'Work Name is empty' => [
+                new Works('', null, '2018-08-12 01:40:00', '2018-08-14 01:40:00', 2)
+            ],
+            'Status Id is empty' => [
+                new Works('', 'kha_lee_12', '2018-08-12 01:40:00', '2018-08-14 01:40:00', '')
+            ],
+        ];
+    }
+
+    public function testDeleteWorkShouldDeleteInDatabaseWhenIdExisted()
     {
         $work = new Works('', 'Test delete', '2018-08-14 01:40:00', '2018-08-19 01:40:00', 2);
 
@@ -67,7 +87,7 @@ class DatabaseTest extends Generic_Tests_DatabaseTestCase
         $this->assertNotSeeInDatabase('work', $params);
     }
 
-    public function testUpdateWorkSuccess()
+    public function testUpdateWorkShouldSaveDatabaseWhenDataValid()
     {
         $work = new Works('', 'Test add', '2018-08-14 01:40:00', '2018-08-19 01:40:00', 2);
 

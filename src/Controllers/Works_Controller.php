@@ -68,7 +68,7 @@ class Works_Controller extends Controller
         try {
             $listKey = array('submit_add_work', 'work_name', 'start_date', 'end_date', 'id_status');
 
-            Verify::checkPostHaveKey($listKey, $_POST);
+            Verify::checkArrayKeyNotEmpty($listKey, $_POST);
             Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
 
             $workObject = new Works('', $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
@@ -104,7 +104,7 @@ class Works_Controller extends Controller
         try {
             $listKey = array('id', 'start', 'end');
 
-            Verify::checkPostHaveKey($listKey, $_POST);
+            Verify::checkArrayKeyNotEmpty($listKey, $_POST);
             Verify::checkIsDateStartLessThanDateEnd($_POST['start'], $_POST['end']);
 
             $workObject = new Works($_POST['id'], '', $_POST['start'], $_POST['end'], '');
@@ -147,7 +147,7 @@ class Works_Controller extends Controller
         try {
             $listKey = array('submit_edit_work', 'work_name', 'start_date', 'end_date', 'id_status');
 
-            Verify::checkPostHaveKey($listKey, $_POST);
+            Verify::checkArrayKeyNotEmpty($listKey, $_POST);
             Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
 
             $workObject = new Works($workId, $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
