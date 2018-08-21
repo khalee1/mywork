@@ -78,8 +78,8 @@
                             <div class="input-group">
                                 <select name="id_status" required>
                                     <?php foreach ($listStatus as $status) { ?>
-                                        <option value="<?php if (null == !$status->getStatusId()) echo htmlspecialchars($status->getStatusId(), ENT_QUOTES, 'UTF-8'); ?>">
-                                            <?php if (null ==! $status->getStatusName()) echo htmlspecialchars($status->getStatusName(), ENT_QUOTES, 'UTF-8'); ?>
+                                        <option value="<?php if (null !== $status->getStatusId()) echo htmlspecialchars($status->getStatusId(), ENT_QUOTES, 'UTF-8'); ?>">
+                                            <?php if (null !== $status->getStatusName()) echo htmlspecialchars($status->getStatusName(), ENT_QUOTES, 'UTF-8'); ?>
                                         </option>
                                     <?php } ?>
                                 </select>
