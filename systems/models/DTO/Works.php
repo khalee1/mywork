@@ -6,7 +6,7 @@
  * Time: 3:20 PM
  */
 
-namespace Kd\Models\Entities;
+namespace Kd\Models\DTO;
 
 class Works
 {

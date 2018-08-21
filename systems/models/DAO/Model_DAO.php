@@ -9,7 +9,7 @@
 namespace Kd\Models\DAO;
 use PDO;
 
-class ModelDAO
+class Model_DAO
 {
     /**
      * @var PDO

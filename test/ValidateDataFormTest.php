@@ -1,16 +1,16 @@
 <?php
 
 use \PHPUnit\Framework\TestCase;
-use Kd\Core\Verify\Verify_Data;
+use Kd\Core\Verify\ValidateDataForm;
 
-class VerifyDataTest extends TestCase
+class ValidateDataFormTest extends TestCase
 {
 
     public function testCheckNotNullReturnTrue()
     {
         $data = "Param Not Null";
 
-        $result = Verify_Data::checkNotNull($data);
+        $result = ValidateDataForm::checkNotNull($data);
 
         $this->assertTrue($result);
     }
@@ -23,14 +23,14 @@ class VerifyDataTest extends TestCase
     {
         $data = null;
 
-        Verify_Data::checkNotNull($data);
+        ValidateDataForm::checkNotNull($data);
     }
 
     public function testCheckIsNumberGreaterThanZeroReturnTrue()
     {
         $data = 12;
 
-        $result = Verify_Data::checkIsNumberGreaterThanZero($data);
+        $result = ValidateDataForm::checkIsNumberGreaterThanZero($data);
 
         $this->assertTrue($result);
     }
@@ -43,7 +43,7 @@ class VerifyDataTest extends TestCase
     {
         $data = '0';
 
-        Verify_Data::checkIsNumberGreaterThanZero($data);
+        ValidateDataForm::checkIsNumberGreaterThanZero($data);
     }
 
     /**
@@ -57,7 +57,7 @@ class VerifyDataTest extends TestCase
      */
     public function testCheckIsNumberGreaterThanZeroThrowExceptionInputNotTypeInt($data)
     {
-        Verify_Data::checkIsNumberGreaterThanZero($data);
+        ValidateDataForm::checkIsNumberGreaterThanZero($data);
     }
 
 
@@ -73,7 +73,7 @@ class VerifyDataTest extends TestCase
     {
         $dayStart = '2018-08-14 01:40:00';
         $dayEnd = '2018-08-19 01:40:00';
-        $result = Verify_Data::checkIsDateStartLessThanDateEnd($dayStart, $dayEnd);
+        $result = ValidateDataForm::checkIsDateStartLessThanDateEnd($dayStart, $dayEnd);
         $this->assertTrue($result);
     }
 
@@ -85,16 +85,18 @@ class VerifyDataTest extends TestCase
     {
         $dayStart = '2018-08-20 01:40:00';
         $dayEnd = '2018-08-19 01:40:00';
-        Verify_Data::checkIsDateStartLessThanDateEnd($dayStart, $dayEnd);
+        ValidateDataForm::checkIsDateStartLessThanDateEnd($dayStart, $dayEnd);
     }
 
     public function testCheckPostHaveKeyReturnTrue()
     {
         $dataListKey = array('id_work', 'work_name');
-        $dataPost = array('id_work' => 2,
-            'work_name' => 'abc');
+        $dataPost = array(
+            'id_work' => 2,
+            'work_name' => 'abc'
+        );
 
-        $result = Verify_Data::checkPostHaveKey($dataListKey, $dataPost);
+        $result = ValidateDataForm::checkPostHaveKey($dataListKey, $dataPost);
         $this->assertTrue($result);
     }
 
@@ -105,9 +107,11 @@ class VerifyDataTest extends TestCase
     public function testCheckPostHaveKeyThrowExceptionPOSTHaveNotKey()
     {
         $dataListKey = array('id_work', 'work');
-        $dataPost = array('id_work' => 2,
-            'work_name' => 'abc');
+        $dataPost = array(
+            'id_work' => 2,
+            'work_name' => 'abc'
+        );
 
-        Verify_Data::checkPostHaveKey($dataListKey, $dataPost);
+        ValidateDataForm::checkPostHaveKey($dataListKey, $dataPost);
     }
 }

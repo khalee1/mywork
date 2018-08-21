@@ -7,7 +7,7 @@
  */
 
 use Kd\Models\DAO\Work_DAO;
-use Kd\Models\Entities\Works;
+use Kd\Models\DTO\Works;
 
 require_once 'Generic_Tests_DatabaseTestCase.php';
 

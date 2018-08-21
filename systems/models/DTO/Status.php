@@ -6,7 +6,7 @@
  * Time: 3:42 PM
  */
 
-namespace Kd\Models\Entities;
+namespace Kd\Models\DTO;
 
 
 class Status

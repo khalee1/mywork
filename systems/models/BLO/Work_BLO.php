@@ -6,12 +6,12 @@
  * Time: 9:15 AM
  */
 
-namespace Kd\Models\BLL;
+namespace Kd\Models\BLO;
 
 use Kd\Models\DAO\Work_DAO;
-use Kd\Models\Entities\Works;
+use Kd\Models\DTO\Works;
 
-class Work_BLL
+class Work_BLO
 {
     public $workDAO = null;
 

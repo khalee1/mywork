@@ -8,9 +8,9 @@
 
 namespace Kd\Models\DAO;
 
-use  Kd\Models\DAO\ModelDAO as ModelDAO;
+use  Kd\Models\DAO\Model_DAO as Model_DAO;
 
-class Status_DAO extends ModelDAO
+class Status_DAO extends Model_DAO
 {
 
     function __construct()

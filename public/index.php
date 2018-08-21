@@ -26,27 +26,27 @@ require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'controller' . DIRECTORY_
 //load Config
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'Config.php';
 //load verify
-require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify' . DIRECTORY_SEPARATOR . 'Verify_Data.php';
+require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify' . DIRECTORY_SEPARATOR . 'ValidateDataForm.php';
 //load verify exception
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'verify' . DIRECTORY_SEPARATOR . 'PostException.php';
 //load view
 require_once SYS_PATH . 'core' . DIRECTORY_SEPARATOR . 'View' . DIRECTORY_SEPARATOR . 'RenderView.php';
-//load entities
-require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'entities' . DIRECTORY_SEPARATOR . 'Works.php';
-//load entities
-require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'entities' . DIRECTORY_SEPARATOR . 'Status.php';
+//load DTO
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DTO' . DIRECTORY_SEPARATOR . 'Works.php';
+//load DTO
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DTO' . DIRECTORY_SEPARATOR . 'Status.php';
 //load DAO (working with DB)
-require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'ModelDAO.php';
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Model_DAO.php';
 //load DAO (working with DB)
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Work_DAO.php';
 //load DAO (working with DB)
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Status_DAO.php';
 //load DAO (working with DB)
 require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'DAO' . DIRECTORY_SEPARATOR . 'Database.php';
-//load BLL
-require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . 'Work_BLL.php';
-//load BLL
-require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLL' . DIRECTORY_SEPARATOR . 'Status_BLL.php';
+//load BLO
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLO' . DIRECTORY_SEPARATOR . 'Work_BLO.php';
+//load BLO
+require_once SYS_PATH . 'models' . DIRECTORY_SEPARATOR . 'BLO' . DIRECTORY_SEPARATOR . 'Status_BLO.php';
 //load helper
 require_once SYS_PATH . 'libraries' . DIRECTORY_SEPARATOR . 'helpers.php';
 //load Error

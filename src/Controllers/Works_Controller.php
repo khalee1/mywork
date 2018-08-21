@@ -1,24 +1,24 @@
 <?php
 
 use Kd\Core\Controller\Controller as Controller;
-use Kd\Core\Verify\Verify_Data as Verify;
-use Kd\Models\Entities\Works as Works;
-use Kd\Models\BLL\Work_BLL as Work_BLL;
-use Kd\Models\BLL\Status_BLL as Status_BLL;
+use Kd\Core\Verify\ValidateDataForm as Verify;
+use Kd\Models\DTO\Works as Works;
+use Kd\Models\BLO\Work_BLO as Work_BLO;
+use Kd\Models\BLO\Status_BLO as Status_BLO;
 use Kd\Core\Verify\PostException as PostEx;
 
 class Works_Controller extends Controller
 {
 
-    private $workBllModel = null;
+    private $workBloModel = null;
 
-    private $statusBllModel = null;
+    private $statusBloModel = null;
 
     public function __construct()
     {
         parent::__construct();
-        $this->workBllModel = new Work_BLL();
-        $this->statusBllModel = new Status_BLL();
+        $this->workBloModel = new Work_BLO();
+        $this->statusBloModel = new Status_BLO();
     }
 
     /**
@@ -50,7 +50,7 @@ class Works_Controller extends Controller
      */
     public function loadData()
     {
-        echo $this->workBllModel->getAllWork();
+        echo $this->workBloModel->getAllWork();
     }
 
     /**
@@ -73,7 +73,7 @@ class Works_Controller extends Controller
 
             $workObject = new Works('', $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
 
-            if (!$this->workBllModel->addWork($workObject))
+            if (!$this->workBloModel->addWork($workObject))
                 throw new \Exception("Add Work Fail");
 
             $this->view->to('works/index');
@@ -83,7 +83,7 @@ class Works_Controller extends Controller
             $data['message'] = $exception->getMessage();
         }
 
-        $data['listStatus'] = $this->statusBllModel->getAllStatus();
+        $data['listStatus'] = $this->statusBloModel->getAllStatus();
         $this->view->renderView('Layouts/header');
         $this->view->renderView('works/add', $data);
         $this->view->renderView('Layouts/footer');
@@ -109,7 +109,7 @@ class Works_Controller extends Controller
 
             $workObject = new Works($_POST['id'], '', $_POST['start'], $_POST['end'], '');
 
-            if (!$this->workBllModel->updateWorkByResize($workObject))
+            if (!$this->workBloModel->updateWorkByResize($workObject))
                 throw new Exception("Update Resize Fail");
 
             $this->view->to('works/index');
@@ -139,7 +139,7 @@ class Works_Controller extends Controller
         Verify::checkNotNull($workId);
         Verify::checkIsNumberGreaterThanZero($workId);
 
-        $work = $this->workBllModel->getWork($workId);
+        $work = $this->workBloModel->getWork($workId);
         Verify::checkNotNull($work);
 
         $data['work'] = $work;
@@ -152,7 +152,7 @@ class Works_Controller extends Controller
 
             $workObject = new Works($workId, $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
 
-            if (!$this->workBllModel->updateWorkByEdit($workObject))
+            if (!$this->workBloModel->updateWorkByEdit($workObject))
                 throw new \Exception("Add Work Fail");
 
             $this->view->to('works/index');
@@ -161,7 +161,7 @@ class Works_Controller extends Controller
             $data['message'] = $exception->getMessage();
         }
 
-        $data['listStatus'] = $this->statusBllModel->getAllStatus();
+        $data['listStatus'] = $this->statusBloModel->getAllStatus();
         $this->view->renderView('Layouts/header');
         $this->view->renderView('works/edit', $data);
         $this->view->renderView('Layouts/footer');
@@ -182,9 +182,9 @@ class Works_Controller extends Controller
     {
         Verify::checkNotNull($workId);
         Verify::checkIsNumberGreaterThanZero($workId);
-        Verify::checkNotNull($this->workBllModel->getWork($workId));
+        Verify::checkNotNull($this->workBloModel->getWork($workId));
 
-        if (!$this->workBllModel->deleteWork($workId))
+        if (!$this->workBloModel->deleteWork($workId))
             throw new Exception("Delete Fail");
 
         $this->view->to('works/index?msg=del');

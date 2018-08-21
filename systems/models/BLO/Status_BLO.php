@@ -6,13 +6,13 @@
  * Time: 10:17 AM
  */
 
-namespace Kd\Models\BLL;
+namespace Kd\Models\BLO;
 
 
 use Kd\Models\DAO\Status_DAO;
-use Kd\Models\Entities\Status;
+use Kd\Models\DTO\Status;
 
-class Status_BLL
+class Status_BLO
 {
     public $statusDAO = null;
 

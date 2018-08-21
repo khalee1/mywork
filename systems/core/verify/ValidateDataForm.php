@@ -12,7 +12,7 @@ use Kd\Core\Verify\PostException as PostEx;
 use Exception;
 use DateTime;
 
-class Verify_Data
+class ValidateDataForm
 {
     /**
      * Check number input is >0 and it is integer
