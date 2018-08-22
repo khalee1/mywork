@@ -90,10 +90,10 @@ class ValidateDataFormTest extends TestCase
 
     public function testCheckArrayKeyNotEmptyShouldReturnTrueWhenArrayKeyNotEmpty()
     {
-        $dataListKey = array('id_work', 'work_name');
+        $dataListKey = array('key_one', 'key_two');
         $dataPost = array(
-            'id_work' => 2,
-            'work_name' => 'abc'
+            'key_one' => 2,
+            'key_two' => 'abc'
         );
 
         $result = ValidateDataForm::checkArrayKeyNotEmpty($dataListKey, $dataPost);
