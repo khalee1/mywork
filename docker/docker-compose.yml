@@ -4,6 +4,7 @@ web:
     - "8080:80"
   links:
     - mysql
+    - selenium
   volumes:
     - ./../:/var/www/html/web
     - "./build/php.ini:/usr/local/etc/php/php.ini"
@@ -20,4 +21,10 @@ mysql:
   env_file:
     - build/env
   container_name: demo_mysql
+
+selenium:
+  image: selenium/standalone-chrome
+  ports:
+    - "4444:4444"
+  container_name: demo_selenium
 

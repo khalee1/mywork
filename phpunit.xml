@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="public/index.php" colors="true">
+    <testsuites>
+        <testsuite name="">
+            <directory suffix="Test.php">test</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <blacklist>
+            <directory>./vendor</directory>
+        </blacklist>
+    </filter>
+    <php>
+        <env name="KD_ENVIRONMENT" value="test"/>
+        <var name="DB_DSN" value="mysql:dbname=myguestbook;host=localhost"/>
+        <var name="DB_USER" value="user"/>
+        <var name="DB_PASSWD" value="passwd"/>
+        <var name="DB_DBNAME" value="myguestbook"/>
+    </php>
+
+</phpunit>

@@ -2,71 +2,91 @@
 
 namespace Kd\Core\Router;
 
+use Kd\Core\Controller\Controller;
 use KD\Core\URI\URI as URI;
 use Kd\Core\Config\Config as Config;
+use Exception;
 
 class Router
 {
 
     protected static $config = null;
+
     public $uri = null;
+
     public $class = '';
+
     public $method = 'index';
+
+    private static $instance;
+
+    public static function getInstance()
+    {
+        if (null === static::$instance) {
+            static::$instance = new static();
+        }
+
+        return static::$instance;
+    }
+
 
     public function __construct()
     {
         self::$config = new Config();
-
         self::$config->load('router');
-
         $this->uri = new URI(true);
-
-        $this->load();
+        $this->loadRouter();
     }
 
-    protected function load()
+    /**
+     * Directional router , call the current controller corresponding to the url
+     *
+     * @param null
+     *
+     * @return void
+     *
+     * @throws \Exception
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    protected function loadRouter()
     {
-        $this->class = ucfirst($this->uri->url_controller) . "_Controller";
+        $this->class = ucfirst($this->uri->urlController) . "_Controller";
 
         if (!file_exists(BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php')) {
-            die('No Controller');
+            throw new Exception('No Controller');
         }
 
-        /**
-         *
-         */
         require_once BASE_PATH . 'Controllers' . DIRECTORY_SEPARATOR . $this->class . '.php';
 
         if (!class_exists($this->class)) {
-            die ('No found  controller');
+            throw new Exception('No found  controller');
         }
 
-        $temp_item_router = self::$config->item($this->uri->url_controller);
+        $tmpRouterItem = self::$config->item($this->uri->urlController);
 
-        if (empty($temp_item_router)) {
-            die('Not found config controller in router');
+        if (empty($tmpRouterItem)) {
+            throw new Exception('Not found config controller in router');
         }
 
-        if (!isset($temp_item_router[$this->uri->url_action])) {
-            die('Not found method in router');
+        if (!isset($tmpRouterItem[$this->uri->urlAction])) {
+            throw new Exception('Not found method in router');
         }
 
-        $this->method = $temp_item_router[$this->uri->url_action];
+        $this->method = $tmpRouterItem[$this->uri->urlAction];
 
-        $controllerObject = new $this->class();
+        $currentController = new $this->class();
 
-        if (!method_exists($controllerObject, $this->method)) {
-            die ('No action');
+        if (!method_exists($currentController, $this->method)) {
+            throw new Exception('No action');
         }
 
-        if (!empty($this->uri->url_params)) {
-
-            call_user_func_array(array($controllerObject, $this->method), $this->uri->url_params);
-
-        } else {
-
-            $controllerObject->{$this->method}();
-
+        if (empty($this->uri->urlParams)) {
+            $currentController->{$this->method}();
+            return;
         }
+
+        call_user_func_array(array($currentController, $this->method), $this->uri->urlParams);
     }
 }

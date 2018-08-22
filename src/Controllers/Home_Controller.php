@@ -1,14 +1,23 @@
 <?php
 
-
 use Kd\Core\Controller\Controller as Controller;
 
 class Home_Controller extends Controller
 {
+    /**
+     * Render view home page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
     public function index()
     {
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/home/index.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('home/index');
+        $this->view->renderView('Layouts/footer');
     }
 }

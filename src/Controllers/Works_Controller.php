@@ -1,136 +1,192 @@
 <?php
 
 use Kd\Core\Controller\Controller as Controller;
+use Kd\Core\Verify\ValidateDataForm as Verify;
+use Kd\Models\DTO\Works as Works;
+use Kd\Models\BLO\Work_BLO as Work_BLO;
+use Kd\Models\BLO\Status_BLO as Status_BLO;
+use Kd\Core\Verify\PostException as PostEx;
 
 class Works_Controller extends Controller
 {
-    public function checkDatetime($dayStart, $dayEnd){
 
-        $dayStart = new DateTime($dayStart);
-        $dayEnd = new DateTime($dayEnd);
-       
+    private $workBloModel = null;
 
-        return ($dayStart>$dayEnd) ? FALSE : true ;
+    private $statusBloModel = null;
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->workBloModel = new Work_BLO();
+        $this->statusBloModel = new Status_BLO();
     }
+
     /**
-     * PAGE: index
-     * This method handles what happens when you move to http://yourproject/works/index
+     * Render works index page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
     public function index()
     {
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/works/index.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('works/index');
+        $this->view->renderView('Layouts/footer');
     }
+
     /**
-     * Action: load
-     * This method handles what happens when you move to http://yourproject/works/load
+     * Load data for works index page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
-    public function load()
+    public function loadData()
     {
-        $result = $this->model->getAllWork();
-
-        if (count($result)>0) {
-            $data = array();
-            foreach ($result as $row) {
-                $data[] = array(
-                    'id' => $row->id,
-                    'title' => $row->work_name,
-                    'start' => $row->start_date,
-                    'end' => $row->end_date,
-                    'color' => $row->color
-                );
-            }
-
-            echo json_encode($data);
-        }
+        echo $this->workBloModel->getAllWork();
     }
+
     /**
-     * PAGE: add
-     * This method handles what happens when you move to http://yourproject/works/add
+     * Add work page
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
-    public function add()
+    public function addWork()
     {
-        if (isset($_POST["submit_add_work"])) {
+        try {
+            $listKey = array('submit_add_work', 'work_name', 'start_date', 'end_date', 'id_status');
 
-            if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
+            Verify::checkArrayKeyNotEmpty($listKey, $_POST);
+            Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
 
+            $workObject = new Works('', $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
 
-                header('location: ' . URL . "works/add?msgd=er");
-                return;
+            if (!$this->workBloModel->addWork($workObject))
+                throw new \Exception("Add Work Fail");
 
-            }
+            $this->view->to('works/index');
 
-            if (!$this->model->addWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'])) {
-
-                header('location: ' . URL . 'works/add');
-            }
-
-            header('location: ' . URL . 'works/index');
-        }
-
-        $list_status = $this->model->getAllStatus();
-        require BASE_PATH . 'Views/Layouts/header.php';
-        require BASE_PATH . 'Views/works/add.php';
-        require BASE_PATH . 'Views/Layouts/footer.php';
-
-
-    }
-    /**
-     * Action: update
-     * This method handles what happens when you move to http://yourproject/works/update
-     */
-    public function update()
-    {
-        if(isset($_POST['id']))
-            if ($this->model->updateWorkByResize( $_POST['start'] ,$_POST['end'] , $_POST['id'])) {
-
-                header('location: ' . URL . "works/index");
-            }
-    }
-    /**
-     * PAGE: edit
-     * This method handles what happens when you move to http://yourproject/works/edit?id=number
-     */
-    public function edit()
-    {
-        if (isset($_POST["submit_edit_work"])) {
-            if (!$this->checkDatetime($_POST['start_date'], $_POST['end_date'])) {
-
-                header('location: ' . URL . "works/edit?id=". $_POST['id_work']."&msgd=er");
-                return;
-            }
-
-            $this->model->updateWork($_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status'] , $_POST['id_work']);
-
-            header('location: ' . URL . 'works/index');
+        } catch (PostEx $exception) {
+        } catch (Exception $exception) {
+            $data['message'] = $exception->getMessage();
         }
 
-        if (isset($_GET['id']))
-        {
-            $work = $this->model->getWork($_GET['id']) ;
+        $data['listStatus'] = $this->statusBloModel->getAllStatus();
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('works/add', $data);
+        $this->view->renderView('Layouts/footer');
+    }
 
-            if (empty($work)) {
-                header('location: ' . URL . 'works/index');
-            }
+    /**
+     * Update Work by resize or drop event in calendar
+     *
+     * @param  null
+     *
+     * @return void
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    public function ajaxUpdate()
+    {
+        try {
+            $listKey = array('id', 'start', 'end');
 
-            $list_status = $this->model->getAllStatus();
-            require BASE_PATH . 'Views/Layouts/header.php';
-            require BASE_PATH . 'Views/works/edit.php';
-            require BASE_PATH . 'Views/Layouts/footer.php';
+            Verify::checkArrayKeyNotEmpty($listKey, $_POST);
+            Verify::checkIsDateStartLessThanDateEnd($_POST['start'], $_POST['end']);
+
+            $workObject = new Works($_POST['id'], '', $_POST['start'], $_POST['end'], '');
+
+            if (!$this->workBloModel->updateWorkByResize($workObject))
+                throw new Exception("Update Resize Fail");
+
+            $this->view->to('works/index');
+
+        } catch (Exception $exception) {
+            $data['message'] = $exception->getMessage();
         }
     }
+
     /**
-     * ACTION: delete Work
-     * This method handles what happens when you move to http://yourproject/works/delete/id
-     * @param int $work_id Id of the to-delete work
+     * Edit work page
+     *
+     * @param int $workId
+     *
+     * @return void
+     *
+     * @throws Exception
+     *
+     * @author khaln@tech.est-rouge.com
+     *
      */
-    public function delete($work_id)
+    public function editWork($workId)
     {
-        if (isset($work_id)) {
-            $this->model->deleteWork($work_id);
+        $work = null;
+        $data = [];
+
+        Verify::checkNotNull($workId);
+        Verify::checkIsNumberGreaterThanZero($workId);
+
+        $work = $this->workBloModel->getWork($workId);
+        Verify::checkNotNull($work);
+
+        $data['work'] = $work;
+
+        try {
+            $listKey = array('submit_edit_work', 'work_name', 'start_date', 'end_date', 'id_status');
+
+            Verify::checkArrayKeyNotEmpty($listKey, $_POST);
+            Verify::checkIsDateStartLessThanDateEnd($_POST['start_date'], $_POST['end_date']);
+
+            $workObject = new Works($workId, $_POST['work_name'], $_POST['start_date'], $_POST['end_date'], $_POST['id_status']);
+
+            if (!$this->workBloModel->updateWorkByEdit($workObject))
+                throw new \Exception("Add Work Fail");
+
+            $this->view->to('works/index');
+        } catch (PostEx $exception) {
+        } catch (Exception $exception) {
+            $data['message'] = $exception->getMessage();
         }
 
-        header('location: ' . URL . 'works/index?msg=del');
+        $data['listStatus'] = $this->statusBloModel->getAllStatus();
+        $this->view->renderView('Layouts/header');
+        $this->view->renderView('works/edit', $data);
+        $this->view->renderView('Layouts/footer');
+    }
+
+    /**
+     * Delete work
+     *
+     * @param int $workId
+     *
+     * @return void
+     *
+     * @throws Exception
+     *
+     * @author khaln@tech.est-rouge.com
+     */
+    public function deleteWork($workId)
+    {
+        Verify::checkNotNull($workId);
+        Verify::checkIsNumberGreaterThanZero($workId);
+        Verify::checkNotNull($this->workBloModel->getWork($workId));
+
+        if (!$this->workBloModel->deleteWork($workId))
+            throw new Exception("Delete Fail");
+
+        $this->view->to('works/index?msg=del');
     }
 }

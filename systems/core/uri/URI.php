@@ -4,54 +4,68 @@ namespace Kd\Core\URI;
 
 class URI
 {
-    public $url_controller = '';
+    public $urlController = '';
 
-    public $url_action = '';
+    public $urlAction = '';
 
-    public $url_params = array();
+    public $urlParams = array();
 
-    public $enable_query = true;
+    public $enableQuery = true;
 
-    public function __construct($enable_query= true)
+    public function __construct($enableQuery = true)
     {
-        $this->enable_query = $enable_query;
+        $this->enableQuery = $enableQuery;
+        $segmentArgs = $this->getURI();
+        $this->urlController = $segmentArgs[0];
+        $this->urlAction = $segmentArgs[1];
 
-        $segment_args =$this->getURI();
-
-        $this->url_controller = $segment_args[0];
-
-        $this->url_action = $segment_args[1];
-
-        if (isset($segment_args[2])) {
-
-            $this->url_params = $segment_args[2];
-
+        if (isset($segmentArgs[2])) {
+            $this->urlParams = $segmentArgs[2];
         }
     }
 
-
-    protected function getURI()
+    /**
+     * Split Url to Controller, Action , Param with url has a format( have ?):
+     * Ex: localhost:8080/controller/action?id=2
+     *
+     * @param string $url
+     *
+     * @return array : Contains controller , Action, Params
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    public function getUrlHaveQuery($url)
     {
-        if (!isset($_SERVER['REQUEST_URI'])) {
-            return array(
-                0 => 'home',
-                1 => 'index'
-            );
+        $url = explode('?', $url);
+        $paramsParse = [];
+        parse_str($url[1], $paramsParse);
+
+        $urlArray = $this->getUrlHaveNoQuery($url[0]);
+
+        if (isset($urlArray[2])) {
+            $urlArray[2] = array_merge($urlArray[2], $paramsParse);
+        } else {
+            $urlArray[2] = $paramsParse;
         }
 
-        $url = trim($_SERVER['REQUEST_URI'], '/');
+        return $urlArray;
+    }
 
-        $url = filter_var($url, FILTER_SANITIZE_URL);
-
+    /**
+     * Split Url to Controller, Action , Param without Query (Haven't ?):
+     * Ex: localhost:8080/controller/action/23
+     *
+     * @param string $url
+     *
+     * @return array : Contains controller , Action, Params
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    public function getUrlHaveNoQuery($url)
+    {
         $url = explode('/', $url);
-
-        if (empty($url[0])) {
-            return array(
-                0 => 'home',
-                1 => 'index'
-            );
-        }
-
         $controller = $url[0];
 
         if (empty($url[1])) {
@@ -61,36 +75,48 @@ class URI
             );
         }
 
-        $query_index = strpos($url[1], '?');
-
-        if (!$this->enable_query && !empty($query_index)){
-            die("No access query");
-        }
-
-        if (empty(strpos($url[1], '?'))) {
-
-            $action = $url[1];
-
-            unset($url[0], $url[1]);
-
-            return array(
-                0 => $controller,
-                1 => $action,
-                2 => array_values($url)
-            );
-        }
-
-        $action = substr($url[1], 0, strpos($url[1], '?'));
-
-        $params = substr($url[1], strpos($url[1], '?') + 1);
-
-        $params_parse = [];
-        parse_str($params, $params_parse);
+        $action = $url[1];
+        unset($url[0], $url[1]);
 
         return array(
             0 => $controller,
             1 => $action,
-            2 => $params_parse
+            2 => array_values($url)
         );
+    }
+
+    /**
+     * Get Url by transfer user
+     *
+     * @param null
+     *
+     * @return array : Contains controller , Action, Params
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    protected function getURI()
+    {
+        $url = trim($_SERVER['REQUEST_URI'], '/');
+        $url = filter_var($url, FILTER_SANITIZE_URL);
+
+        if (empty($url)) {
+            return array(
+                0 => 'home',
+                1 => 'index'
+            );
+        }
+
+        $queryIndex = strpos($url, '?');
+
+        if (!$this->enableQuery && !empty($queryIndex)) {
+            die("No access query");
+        }
+
+        if (empty($queryIndex)) {
+            return $this->getUrlHaveNoQuery($url);
+        }
+
+        return $this->getUrlHaveQuery($url);
     }
 }

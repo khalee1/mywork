@@ -1,39 +1,69 @@
 <?php
+
 namespace Kd\Core\Config;
 
 
 class Config
 {
+
     protected $config = array();
 
-    public function load($config_name)
+    public function set_item($key, $val)
     {
-        if (file_exists(SYS_PATH . '/common/'.$config_name. '.php')){
-
-            $config_array = require_once SYS_PATH . '/common/'.$config_name . '.php';
-
-            if ( !empty($config_array) && is_array($config_array) ){
-                foreach ($config_array as $key => $item){
-                    $this->config[$key] = $item;
-                }
-            }
-
-            return true;
-
-        }
-
-        return FALSE;
-    }
-
-    public function item($key, $defailt_val = null)
-    {
-        return isset($this->config[$key]) ? $this->config[$key] : $defailt_val;
-    }
-
-    public function set_item($key, $val){
         $this->config[$key] = $val;
     }
-    public function get_config(){
+
+    public function get_config()
+    {
         $this->config();
+    }
+
+    /**
+     * Load config for controller
+     *
+     * @param string $configName
+     *
+     * @return boolean
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    public function load($configName)
+    {
+        $fileList = array(
+            SYS_PATH . 'common/' . $configName . '.php',
+            SYS_PATH . 'common/' . KD_ENVIRONMENT . DIRECTORY_SEPARATOR . $configName . '.php'
+        );
+
+        foreach ($fileList as $file){
+            if (file_exists($file)) {
+                $configArray = include $file;
+            }
+
+            if (empty($configArray) || !is_array($configArray)) {
+                continue;
+            }
+
+            foreach ($configArray as $key => $item) {
+                $this->config[$key] = $item;
+            }
+        }
+    }
+
+    /**
+     * Get item config
+     *
+     * @param string $key
+     *
+     * @param  array $defaultVal
+     *
+     * @return boolean
+     *
+     * @author khaln@tech.est-rouge.com
+     *
+     */
+    public function item($key, $defaultVal = null)
+    {
+        return isset($this->config[$key]) ? $this->config[$key] : $defaultVal;
     }
 }

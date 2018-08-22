@@ -1,37 +1,23 @@
 <?php
 
 namespace Kd\Core\Controller;
-use Kd\Core\Config\Config as Config;
-use Kd\Models\DAO\Work_DAO as Works;
-use PDO;
+
+
+use Kd\Core\View\RenderView as RenderView;
+
 
 class Controller
 {
-    /**
-     * @param DAO $model Model of Controller
-     *
-     * */
-    public $model = null ;
 
-    /**
-     * @param database $db Database Connect
-     *
-     * */
-    public $db = null ;
-
-    public $config = null;
+    public $view = null;
 
     function __construct()
     {
-        $this->config = new Config();
-        $this->config->load('config');
-        $this->openConnectionToDatabase($this->config->item('db'));
-        $this->model = new Works($this->db);
+        $this->view = new RenderView();
     }
 
-    private function openConnectionToDatabase($configDB)
+    function __destruct()
     {
-        $options = array(PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_OBJ, PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING);
-        $this->db = new PDO($configDB['type'] . ':host=' . $configDB['host'] . ';dbname=' . $configDB['schema'] . ';charset=' . $configDB['charset'], $configDB['user'], $configDB['pass'], $options);
+        $this->view->show();
     }
 }
