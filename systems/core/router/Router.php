@@ -3,7 +3,7 @@
 namespace Kd\Core\Router;
 
 use Kd\Core\Controller\Controller;
-use KD\Core\URI\URI as URI;
+use Kd\Core\URI\URI;
 use Kd\Core\Config\Config as Config;
 use Exception;
 

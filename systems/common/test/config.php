@@ -1,4 +1,4 @@
-<?php defined('SYS_PATH') OR exit('No direct script access allowed');
+<?php
 /**
  * Configuration for: DB ,  .. (continue )
  * This is the place where you define your database credentials, database type etcdevelop ,v.v...

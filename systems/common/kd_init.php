@@ -1,4 +1,4 @@
-<?php defined('SYS_PATH') OR exit('No direct script access allowed');
+<?php
 /**
  * Configuration for: URL
  * Init Full Domain

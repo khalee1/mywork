@@ -27,4 +27,9 @@ selenium:
   ports:
     - "4444:4444"
   container_name: demo_selenium
+rabbitmq:
+  image: rabbitmq
+  ports:
+  - "5672:5672"
+  container_name: rabbitmq
 

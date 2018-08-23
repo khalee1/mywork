@@ -45,7 +45,7 @@ class Error
     {
         if ($exception instanceof Exception) {
             $data['message'] = $exception->getMessage();
-            view()->renderFile(SYS_PATH . "core/exceptions/resources/views",
+            view()->renderFile(SYS_PATH . "Core/exceptions/resources/views",
                 '500',
                 $data);
             view()->show();
