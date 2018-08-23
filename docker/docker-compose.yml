@@ -5,6 +5,7 @@ web:
   links:
     - mysql
     - selenium
+    - rabbitmq
   volumes:
     - ./../:/var/www/html/web
     - "./build/php.ini:/usr/local/etc/php/php.ini"
