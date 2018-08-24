@@ -34,7 +34,10 @@ class Router
     {
         self::$config = new Config();
         self::$config->load('router');
-        $this->uri = new URI(true);
+
+    }
+    public function run($request_uri){
+        $this->uri = new URI($request_uri,true);
         $this->loadRouter();
     }
 

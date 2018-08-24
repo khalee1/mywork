@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: lenguyenkha
- * Date: 8/7/18
- * Time: 3:07 PM
- */
+//set a root path project
 
 //set a root path project
 define('ROOT', dirname(__DIR__) . DIRECTORY_SEPARATOR);
@@ -17,6 +12,8 @@ define('KD_ENVIRONMENT', (getenv('KD_ENVIRONMENT') != null) ? getenv('KD_ENVIRON
 
 require_once ROOT . "vendor/autoload.php";
 
-set_exception_handler(array("\Kd\Http\Exception\Error", "exceptionHandler"));
+set_exception_handler(array("\Kd\Http\Exception\Error", "exceptionHandlerCommand"));
 
-if (KD_ENVIRONMENT !== 'test') $app = app()->run($_SERVER["REQUEST_URI"]);
+$app = app()->run($_SERVER["argv"][1]);
+
+

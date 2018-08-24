@@ -51,4 +51,11 @@ class Error
             view()->show();
         }
     }
+
+    public static function exceptionHandlerCommand($exception)
+    {
+        if ($exception instanceof Exception) {
+            echo "Error: "  . $exception->getMessage(). PHP_EOL;
+        }
+    }
 }

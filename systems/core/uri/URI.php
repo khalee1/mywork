@@ -12,10 +12,10 @@ class URI
 
     public $enableQuery = true;
 
-    public function __construct($enableQuery = true)
+    public function __construct($request_uri ,$enableQuery = true)
     {
         $this->enableQuery = $enableQuery;
-        $segmentArgs = $this->getURI();
+        $segmentArgs = $this->getURI($request_uri);
         $this->urlController = $segmentArgs[0];
         $this->urlAction = $segmentArgs[1];
 
@@ -88,16 +88,16 @@ class URI
     /**
      * Get Url by transfer user
      *
-     * @param null
+     * @param array $request_uri
      *
      * @return array : Contains controller , Action, Params
      *
      * @author khaln@tech.est-rouge.com
      *
      */
-    protected function getURI()
+    protected function getURI($request_uri)
     {
-        $url = trim($_SERVER['REQUEST_URI'], '/');
+        $url = trim($request_uri, '/');
         $url = filter_var($url, FILTER_SANITIZE_URL);
 
         if (empty($url)) {

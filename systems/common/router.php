@@ -4,12 +4,16 @@ $router['default_controller'] = 'home';
 
 $router['default_action'] = 'index';
 
-$router['home'] = array('index' => 'index');
+$router['home'] = array('index' => 'index',
+    'send' => 'send',
+    'receive' => 'receive'
+);
 
 $router['works'] = array('index' => 'index',
     'add' => 'addWork',
     'load' => 'loadData',
     'update' => 'ajaxUpdate',
     'delete' => 'deleteWork',
-    'edit' => 'editWork');
+    'edit' => 'editWork'
+);
 return $router;
