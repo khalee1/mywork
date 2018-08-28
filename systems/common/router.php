@@ -16,4 +16,8 @@ $router['works'] = array('index' => 'index',
     'delete' => 'deleteWork',
     'edit' => 'editWork'
 );
+$router['rabbit'] = array('task' => 'newTask',
+    'worker' => 'worker',
+    'test' => "test_process"
+);
 return $router;
